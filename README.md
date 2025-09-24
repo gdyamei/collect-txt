@@ -22,15 +22,3 @@
 
 > 电台：https://radio.iptv365.org 
 
-## 公众号・赞赏（请作者喝咖啡！）
-
-> 关注获取更多信息，有问题公众号留言。
-
-> 公平起见赞赏🍸☕15元以上的朋友们加微信群交流。
-
-![image](./assets/gongzhonghao+appreciate2025.png)
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=kimwang1978/collect-tv-txt&type=Date)](https://star-history.com/#kimwang1978/collect-tv-txt&Date)
-
