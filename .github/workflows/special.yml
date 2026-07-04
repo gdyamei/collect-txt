@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout code
+    #- name: Checkout code
+  - name: Checkout repository
       uses: actions/checkout@v4
       with:
         # ✨ 關鍵 1：設定 fetch-depth 為 0，拉取完整歷史，這樣 pull --rebase 才能正常運作
