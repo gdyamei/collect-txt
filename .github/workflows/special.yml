@@ -36,6 +36,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add assets/special/special.txt
           git commit -m ":tv:  (special)AutoUpdate $(date -d "+8 hours" +'%Y%m%d')"
+          shell: /usr/bin/bash -e {0}
           
     - name: Push changes
       uses: ad-m/github-push-action@master
