@@ -46,5 +46,6 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-    
+        branch: main
+        pull: true # 👈 將這裡改為 true，自動處理遠端新變更
         
