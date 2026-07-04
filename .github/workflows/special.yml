@@ -15,9 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v4
-      
+      with:
+        # ✨ 關鍵 1：設定 fetch-depth 為 0，拉取完整歷史，這樣 pull --rebase 才能正常運作
+        fetch-depth: 0      
+        
     - name: Set up Python
       uses: uses: actions/setup-python@v5
       with:
@@ -35,11 +38,13 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add assets/special/special.txt
-          # ✨ 檢查是否有東西需要被提交
+         # ✨ 關鍵 2：在 Commit 前拉取遠端最新修改並進行基底重設 (Rebase)
+          git pull --rebase origin main
+          
           if git diff-index --quiet HEAD --; then
-            echo "沒有任何檔案變更，跳過 Commit。"
+            echo "沒有變更，跳過 Commit。"
           else
-            git commit -m ":tv:  (special)AutoUpdate $(date -d "+8 hours" +'%Y%m%d')"
+            git commit -m ":tv: (special)AutoUpdate $(date -d "+8 hours" +'%Y%m%d')"
           fi
           
     - name: Push changes
@@ -47,5 +52,5 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: main
-        pull: true # 👈 將這裡改為 true，自動處理遠端新變更
+
         
