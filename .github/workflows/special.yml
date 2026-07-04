@@ -36,12 +36,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add assets/special/special.txt
           #git commit -m ":tv:  (special)AutoUpdate $(date -d "+8 hours" +'%Y%m%d')"
-        # 检查是否有内容需要提交
-    if [ -n "$(git status --porcelain)" ]; then
-         git commit -m ":tv: (special)AutoUpdate $(date -d "+8 hours" +'%Y%m%d')"
-    else
-      echo "No changes to commit"
-    fi
+         git commit --allow-empty -m ":tv: (special)AutoUpdate $(date -d "+8 hours" +'%Y%m%d')"
           
     - name: Push changes
       uses: ad-m/github-push-action@master
