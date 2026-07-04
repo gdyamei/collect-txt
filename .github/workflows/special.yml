@@ -35,8 +35,12 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add assets/special/special.txt
-          git commit -m ":tv:  (special)AutoUpdate $(date -d "+8 hours" +'%Y%m%d')"
-          shell: /usr/bin/bash -e {0}
+          # ✨ 檢查是否有東西需要被提交
+          if git diff-index --quiet HEAD --; then
+            echo "沒有任何檔案變更，跳過 Commit。"
+          else
+            git commit -m ":tv:  (special)AutoUpdate $(date -d "+8 hours" +'%Y%m%d')"
+          fi
           
     - name: Push changes
       uses: ad-m/github-push-action@master
