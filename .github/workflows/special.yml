@@ -52,5 +52,6 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: main
-
+        force: true # 强制推送，覆盖远程分支
+       directory: 
         
