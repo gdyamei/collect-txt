@@ -44,7 +44,7 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add bbxx.txt bbxx.m3u bbxx_lite.txt bbxx_lite.m3u others_output.txt tiyu.html
-          git commit -m ":tada:  AutoUpdate $(date +'%Y%m%d')"
+          git commit -m ":tada:  AutoUpdate $(date +'%Y-%m-%d %H:%M:%S')"
 
           current_datetime=$(date +"%Y%m%d_%H%M%S")
           # cp merged_output.txt history/"${current_datetime}_merged_output.txt"
