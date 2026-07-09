@@ -39,10 +39,10 @@ jobs:
           # 将归档文件打包zip文件
           current_date=$(date +%Y-%m-%d)
           current_datetime=$(date +"%Y%m%d_%H%M")
-          zip_filename="${current_datetime}_UrlSnapshot.zip"
-          zip -r "assets/snapshot/${zip_filename}" "assets/snapshot/${current_date}"
-          git add "assets/snapshot/${zip_filename}"
-          git commit -m "(UrlSnapshot) archive snapshot file"          
+          # zip_filename="${current_datetime}_UrlSnapshot.zip"
+          # zip -r "assets/snapshot/${zip_filename}" "assets/snapshot/${current_date}"
+          # git add "assets/snapshot/${zip_filename}"
+          # git commit -m "(UrlSnapshot) archive snapshot file"          
           
     - name: Push changes
       uses: ad-m/github-push-action@master
