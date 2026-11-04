@@ -163,9 +163,9 @@ excluded_keywords = ['epg', 'mitv', 'udp', 'rtp', 'P2p', 'p2p', 'p3p', 'P2P', 'P
                      '春节', '网络收集', '95.179', 'hlspull', 'github', 'lunbo', 'tw.ts138', '//tvb', 'extraott', 
                      '22:8891', 'fanmingming', '43:22222', 'etv.xhgvip', 'free.xiptv', 'www.zhixun', 'xg.52sw', 'iptv.yjxfz.com', 
                      'zb.qc', '/vd', '/TV2/', 'stream1', '/kkk.jjjj.', 'http://php.j', '4gtv.cnlive.club', 'video://https', 'epg.pw',  
-                     'youtube.com', 'tv.iill.top', 'audio']    #, 'CHC', '/TV2/'
+                     'youtube.com', 'tv.iill.top', 'audio', 'aktv-stream', 'api.kkitv', 'aktv.top', 'live4play.uk', 'vpstv.net', 'radio']    #, 'CHC', '/TV2/'
 # 定义一个包含所有要提取的关键词的列表
-extract_keywords = ['珠江', '东莞', '广州', '佛山', '广东', 
+extract_keywords = ['珠江', '东莞', '广州', '佛山', '广东新闻', 
                     '翡翠台','有线新闻','无线新闻','TVB翡翠','TVB明珠','NOW新闻','Now','无线华丽','TVB星河','TVB-Plus',
                      'TVBPLUS','TVB黄金翡翠','TVB千禧','TVB娱乐','TVB J2','RTHK','VIU','凤凰卫视','凤凰香港','凤凰中文',
                      '凤凰资讯','香港卫视','天映','美亚','新加坡','澳门','澳亚','千禧经典','华丽台',
