@@ -425,8 +425,8 @@ file_path = "网络收集.txt"
 with open(file_path, 'r+', encoding='utf-8') as f:
     content = f.read()
     f.seek(0, 0)
-    f.write(f'{current_time}更新,#genre#\n')
-    f.write(f'虚情的爱,https://vd2.bdstatic.com/mda-mi1dd05gmhwejdwn/sc/cae_h264/1630576203346678103/mda-mi1dd05gmhwejdwn.mp4\n{content}')
+    f.write(f'{current_time}更新,#genre#\n{content}')
+###    f.write(f'虚情的爱,https://vd2.bdstatic.com/mda-mi1dd05gmhwejdwn/sc/cae_h264/1630576203346678103/mda-mi1dd05gmhwejdwn.mp4\n{content}')
        
 
 ################################################################################################任务结束，删除不必要的过程文件
