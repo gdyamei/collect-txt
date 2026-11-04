@@ -182,8 +182,8 @@ excluded_keywords = ['epg', 'mitv', 'udp', 'rtp', 'P2p', 'p2p', 'p3p', 'P2P', 'P
                      '21dtv', 'txmov2', 'gcw.bdcdn', 'metshop', 'shandong', 'goodiptv', '购物', '[', 'P3P', '腔', '曲', '//1', '/hls/', '/tsfile/', 
                      '春节', '网络收集', '95.179', 'hlspull', 'github', 'lunbo', 'tw.ts138', '//tvb', 'extraott', 
                      '22:8891', 'fanmingming', '43:22222', 'etv.xhgvip', 'free.xiptv', 'www.zhixun', 'xg.52sw', 'iptv.yjxfz.com', 
-                     'zb.qc', '/vd', '/TV2/', 'stream1', '/kkk.jjjj.', 'http://php.j', '4gtv.cnlive.club', 'video://https', 'epg.pw',   #, 'CHC', '/TV2/'
-                     'youtube.com'] 
+                     'zb.qc', '/vd', '/TV2/', 'stream1', '/kkk.jjjj.', 'http://php.j', '4gtv.cnlive.club', 'video://https', 'epg.pw',  
+                     'youtube.com', 'tv.iill.top', 'audio']    #, 'CHC', '/TV2/'
 # 定义一个包含所有要提取的关键词的列表
 extract_keywords = ['珠江', '东莞', '广州', '佛山', '广东', 
                     '翡翠台','有线新闻','无线新闻','TVB翡翠','TVB明珠','NOW新闻','Now','无线华丽','TVB星河','TVB-Plus',
