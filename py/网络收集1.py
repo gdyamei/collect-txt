@@ -451,7 +451,7 @@ def main(input_file, output_file):
 if __name__ == "__main__":
     # 请修改这里的文件名
     INPUT_FILE = "网络收集.txt"
-    OUTPUT_FILE = "网络收集.txt"  # 不要与输入文件同名，防止数据丢失
+    OUTPUT_FILE = "网络收集1.txt"  # 不要与输入文件同名，防止数据丢失
     
     main(INPUT_FILE, OUTPUT_FILE)
 
@@ -462,7 +462,7 @@ if __name__ == "__main__":
 import re
 from pypinyin import lazy_pinyin
 # 打开一个utf-8编码的文本文件
-with open("网络收集.txt", "r", encoding="utf-8") as file:
+with open("网络收集1.txt", "r", encoding="utf-8") as file:
     # 读取所有行并存储到列表中
     lines = file.readlines()
 # 定义一个函数，用于提取每行的第一个数字
@@ -472,7 +472,7 @@ def extract_first_number(line):
 # 对列表中的行进行排序，按照第一个数字的大小排列，其余行按中文排序
 sorted_lines = sorted(lines, key=lambda x: (not 'CCTV' in x, extract_first_number(x) if 'CCTV' in x else lazy_pinyin(x.strip())))
 # 将排序后的行写入新的utf-8编码的文本文件
-with open("网络收集.txt", "w", encoding="utf-8") as file:
+with open("网络收集1.txt", "w", encoding="utf-8") as file:
     for line in sorted_lines:
         file.write(line)
 
@@ -530,7 +530,7 @@ def parse_file(input_file_path, output_file_name):    #
             output_file.write('\n')  # 在每个小段后添加一个空行作为分隔
             alphabet_counter += 1  # 递增字母计数器
 # 调用函数并传入文件路径和输出文件名
-parse_file('网络收集.txt', '网络收集.txt')
+parse_file('网络收集1.txt', '网络收集1.txt')
 
 
 
@@ -540,7 +540,7 @@ import datetime
 now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
 current_time = now.strftime("%Y/%m/%d %H:%M")
 # 打开文本文件并将时间添加到开头
-file_path = "网络收集.txt"
+file_path = "网络收集1.txt"
 with open(file_path, 'r+', encoding='utf-8') as f:
     content = f.read()
     f.seek(0, 0)
