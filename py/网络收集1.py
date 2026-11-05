@@ -77,22 +77,17 @@ with open('汇总.txt', 'r', encoding="utf-8") as file:
 #定义替换规则的字典对频道名替换
 replacements = {
     	"中央": "CCTV",
-
     	"CCTV1综合": "CCTV1",
     	"CCTV2财经": "CCTV2",
     	"CCTV3综艺": "CCTV3",
-
-
     	"CCTV-": "CCTV",
     	"CCTV_": "CCTV",
-
     	"CCTV风云剧场": "风云剧场",
     	"CCTV第一剧场": "第一剧场",
     	"CCTV怀旧剧场": "怀旧剧场",
     	"熊猫影院": "熊猫电影",
     	"熊猫爱生活": "熊猫生活",
     	"爱宠宠物": "宠物生活",
-
     	"卫视超": "卫视",
     	"CCTV风云剧场": "风云剧场",
     	"CCTV第一剧场": "第一剧场",
