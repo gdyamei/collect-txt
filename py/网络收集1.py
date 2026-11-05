@@ -76,7 +76,12 @@ with open('汇总.txt', 'r', encoding="utf-8") as file:
     lines = file.readlines()
 #定义替换规则的字典对频道名替换
 replacements = {
-    	"CCTV-": "CCTV",
+    	"中视购物":""
+       "CCTV中视购物":""
+        "凤凰古城东关门":""
+        "凤凰古城南华山":""
+        "纬来体育":""
+       "CCTV-": "CCTV",
     	"CCTV_": "CCTV",
     	"CCTV1综合": "CCTV1",
     	"CCTV2财经": "CCTV2",
@@ -210,16 +215,17 @@ excluded_keywords = [
     'audio', '://zyrnet.com', 'satellitepull.cnr.cn/live/', 'gmxw.7766.org',
     '122.152.202.33', 'psyl11.dyndns.tv', 'youtube.com', 'xhyx.gz.cn', 'aktv-stream', 
     'api.kkitv', 'aktv.top', 'live4play.uk', 'vpstv.net', 'raw.githubusercontent',
-    'tv.iill.top', 'iptv8k.top', 'douyincdn.com'
+    'tv.iill.top', 'iptv8k.top', 'douyincdn.com','myalicdn.com','yy/1354931498','体育'
 ]
 excluded_keywords = [k.lower() for k in excluded_keywords]
 
 # 2. 按分类定义提取关键词（用于自动分组）
 categories = {
     "广东本地": ['珠江', '广东新闻', '广东民生', '广州影视', '广州新闻', '广州综合', '佛山公共', '佛山影视', '佛山综合', '东莞', '深圳财经生活', '南国都市'],
-    "港澳频道": ['翡翠台', '有线新闻', '无线新闻', 'tvb', 'now', 'rthk', 'viu', '凤凰', '香港卫视', '天映', '美亚', '澳门', '澳亚', '千禧经典', '华丽台', 'thrill', '龙祥'],
+    "港澳频道": ['翡翠台', '有线新闻', '无线新闻', 'tvb', 'now', 'rthk', 'viu', '凤凰', '香港卫视', '天映', '美亚', '澳门', '澳亚', '千禧经典', '华丽台', 
+                  '无线华丽','明珠台','thrill', '龙祥'],
     "台湾频道": ['tvbs', '寰宇', '台视', '东森', '東森', '公视', '华视', '中视', '中天', '民视', '龙华', '八大', '非凡', '三立', '纬来', '靖天', '大立'],
-    "其他新加坡": ['新加坡']
+    "其他新加坡": ['新加坡','Fox新闻']
 }
 
 # 展开一个扁平化的关键词列表，方便快速匹配
@@ -268,7 +274,7 @@ def filter_and_sort_text_playlist(input_file, output_file):
     with open(output_file, 'w', encoding='utf-8') as outfile:
         for cat, items in classified_data.items():
             if items: # 如果该分类下有数据
-                outfile.write(f"\n#首页分类__{cat}\n") # 写入播放器识别的分组标签
+                outfile.write(f"\n{cat} ,#genre#\n") # 写入播放器识别的分组标签
                 # 按频道名字排序后写入
                 sorted_lines = sorted(items.values())
                 for sorted_line in sorted_lines:
