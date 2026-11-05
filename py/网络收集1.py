@@ -339,119 +339,173 @@ remove_duplicates('网络收集.txt', '网络收集.txt')
 
 ######################连通性检测
 
+
 import requests
 import time
 import cv2
 from urllib.parse import urlparse
 from tqdm import tqdm
-import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# 测试HTTP连接并尝试下载数据
-def test_connectivity_and_download(url, initial_timeout=2, retry_timeout=2):
-    parsed_url = urlparse(url)
-    if parsed_url.scheme not in ['http', 'https']:
-        # 非HTTP(s)协议，尝试RTSP检测
-   ####     return test_rtsp_connectivity(url, retry_timeout)
-       return False
-    else:
-        # HTTP(s)协议
-        try:
-            # 增加普遍的 User-Agent 避免被部分源屏蔽
-            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-            with requests.get(url, stream=True, timeout=initial_timeout, headers=headers) as response:
-                if response.status_code == 200:
-                    start_time = time.time()
-                    while time.time() - start_time < initial_timeout:
-                        chunk = response.raw.read(2048)  # 修改为2KB，更容易满足读取条件
-                        if chunk:
-                            return True  # 成功下载到数据
-        except requests.RequestException:
-            pass 
-    return False
+# 配置常量
 
-# 测试RTSP连接并尝试读取流
-def test_rtsp_connectivity(url, timeout=3):
-    cap = cv2.VideoCapture(url)
-    if not cap.isOpened():
+HTTP_TIMEOUT = 3       # HTTP 连接超时时间 (秒)
+RTSP_TIMEOUT = 5       # RTSP 检测超时时间 (秒)
+MAX_WORKERS = 20       # 线程池大小，根据网络状况调整
+
+def test_http_connectivity(url, timeout=HTTP_TIMEOUT):
+    """
+    测试 HTTP/HTTPS 直播源连通性
+    """
+    try:
+        # stream=True 避免下载整个文件，只获取头部和少量数据
+        with requests.get(url, stream=True, timeout=timeout) as response:
+            if response.status_code == 200:
+                # 尝试读取一小块数据以确认流确实存在
+                for chunk in response.iter_content(chunk_size=1024):
+                    if chunk:
+                        return True
+                    break  # 只要读到一点数据就认为连通
+            else:
+                return False
+    except requests.RequestException:
         return False
-    start_time = time.time()
-    while time.time() - start_time < timeout:
-        ret, _ = cap.read()
-        if ret:
-            cap.release()
-            return True  # 成功读取帧
-    cap.release()
-    return False
+    except Exception:
+        return False
 
-# 主函数
-def main(input_path, output_path):
-    if not os.path.exists(input_path):
-        print(f"错误：输入文件 {input_path} 不存在！")
+def test_rtsp_connectivity(url, timeout=RTSP_TIMEOUT):
+    """
+    测试 RTSP 直播源连通性
+    """
+    cap = None
+    try:
+        cap = cv2.VideoCapture(url)
+        # 设置超时属性 (部分后端支持)
+        cap.set(cv2.CAP_PROP_OPEN_TIMEOUT_MSEC, timeout * 1000)
+        
+        if not cap.isOpened():
+            return False
+        
+        start_time = time.time()
+        while time.time() - start_time < timeout:
+            ret, frame = cap.read()
+            if ret and frame is not None:
+                return True
+            # 短暂休眠，避免 CPU 空转
+            time.sleep(0.1)
+            
+        return False
+    except Exception:
+        return False
+    finally:
+        # 确保摄像头对象被释放
+        if cap is not None:
+            cap.release()
+
+def test_connectivity_and_download(url):
+    """
+    根据协议类型选择检测方法
+    """
+    if not url:
+        return False
+    
+    parsed_url = urlparse(url)
+    scheme = parsed_url.scheme.lower()
+    
+    if scheme in ['http', 'https']:
+        return test_http_connectivity(url)
+    elif scheme == 'rtsp':
+        return test_rtsp_connectivity(url)
+    else:
+        # 不支持的协议，视为无效
+        return False
+
+def process_line(line):
+    """
+    处理单行数据，返回 (name, url, is_valid) 或 None
+    """
+    line = line.strip()
+    if not line:
+        return None
+    
+    # 简单解析 CSV 格式: Name,URL
+    # 注意：如果名称中包含逗号，这种简单 split 会出错。
+    # 假设格式严格为 "名称,URL" 且 URL 中不含逗号
+    parts = line.split(",", 1)  # 最多分割一次，防止 URL 中有逗号
+    
+    if len(parts) != 2:
+        return None
+        
+    channel_name, channel_url = parts
+    channel_name = channel_name.strip()
+    channel_url = channel_url.strip()
+    
+    if not channel_url:
+        return None
+        
+    # 跳过元数据行 (如 #EXTINF)，除非你想保留它们
+    if channel_name.startswith('#'):
+        return None
+
+    try:
+        is_valid = test_connectivity_and_download(channel_url)
+    except Exception:
+        is_valid = False
+        
+    return (channel_name, channel_url, is_valid)
+
+def main(input_file, output_file):
+    print(f"开始读取文件: {input_file}")
+    try:
+        with open(input_file, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+    except FileNotFoundError:
+        print(f"错误: 文件 {input_file} 不存在")
         return
 
-    with open(input_path, "r", encoding="utf-8") as source_file:
-        lines = source_file.readlines()
-
-    results = []
-    valid_count = 0
+    valid_results = []
     invalid_count = 0
-
-    for line in tqdm(lines, desc="检测中"):
-        line_str = line.strip()
-        if not line_str:
-            continue
-            
-        # 优先判断是否为分类行（包含 genre），如果是，直接保留不进行网络检测
-        if "genre" in line_str.lower():
-            results.append(line_str)
-            continue
-
-        parts = line_str.split(",")
-        if len(parts) >= 2:
-            channel_name = parts[0].strip()
-            # 考虑到 URL 中可能包含逗号，拼接剩余部分
-            channel_url = ",".join(parts[1:]).strip() 
-            
-            if not channel_url:
-                results.append(line_str) # 空URL行保留原样
-                continue
-
+    total_lines = len(lines)
+    
+    print(f"共发现 {total_lines} 行，开始多线程检测...")
+    
+    # 使用线程池并行处理
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        # 提交所有任务
+        future_to_line = {executor.submit(process_line, line): line for line in lines if line.strip()}
+        
+        # 使用 tqdm 显示进度
+        for future in tqdm(as_completed(future_to_line), total=len(future_to_line), desc="检测进度"):
             try:
-                is_valid = test_connectivity_and_download(channel_url)
+                result = future.result()
+                if result:
+                    name, url, is_valid = result
+                    if is_valid:
+                        valid_results.append((name, url))
+                    else:
+                        invalid_count += 1
             except Exception as e:
-                print(f"\n检测URL {channel_url} 时发生错误: {e}")
-                is_valid = False
-
-            if is_valid:
-                status = "有效"
-                valid_count += 1
-                # 核心安全修改：只将有效源写入结果，或者你想保留无效源在行末加注释？
-                # 这里采用你原本的逻辑：只保留有效源和分类行
-                results.append(f"{channel_name},{channel_url}")
-            else:
-                status = "无效"
+                # 理论上 process_line 内部已捕获异常，此处为保险
                 invalid_count += 1
-                # 如果你想在文件中保留无效源供日后参考，可以取消注释下面这行：
-                # results.append(f"{channel_name},{channel_url} # 无效") 
-        else:
-            # 不符合标准格式的行（如杂质行、单行注释等）原样保留
-            results.append(line_str)
 
-    # 写入文件
-    with open(output_path, "w", encoding="utf-8") as output_file:
-        for item in results:
-            output_file.write(f"{item}\n")
+    # 写入有效结果
+    with open(output_file, "w", encoding="utf-8") as f:
+        for name, url in valid_results:
+            f.write(f"{name},{url}\n")
 
-    print(f"\n任务完成！")
-    print(f"有效源数量: {valid_count}")
-    print(f"已过滤无效源数量: {invalid_count}")
-    print(f"结果已保存至: {output_path}")
+    print("-" * 50)
+    print(f"检测完成!")
+    print(f"有效源数量: {len(valid_results)}")
+    print(f"无效源数量: {invalid_count}")
+    print(f"结果已保存至: {output_file}")
 
 if __name__ == "__main__":
-    输入文件 = "网络收集.txt"
-    # 强烈建议输出到新文件，确认无误后再手动覆盖，防止误删数据
-    输出文件 = "网络收集.txt" 
-    main(输入文件, 输出文件)
+    # 请修改这里的文件名
+    INPUT_FILE = "网络收集.txt"
+    OUTPUT_FILE = "网络收集.txt"  # 不要与输入文件同名，防止数据丢失
+    
+    main(INPUT_FILE, OUTPUT_FILE)
+
 
 
 
