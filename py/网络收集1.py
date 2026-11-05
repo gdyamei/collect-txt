@@ -250,12 +250,7 @@ excluded_keywords = ['http://[', 'p3p://', 'rtmp://', 'http://php.j', '/kkk.jjjj
                      'video://https', '.xmcdn.com', 'radio', 'jnzq.ohoyee.com', 'free.', '221.7.175.154', 'audio', 'zmgd.zyrnet.com', 'satellitepull.cnr.cn/live/', 'gmxw.7766.org',
                      '122.152.202.33', 'psyl11.dyndns.tv', 'youtube.com', 'xhyx.gz.cn', 'aktv-stream', 'api.kkitv', 'aktv.top', 'live4play.uk', 'vpstv.net','raw.githubusercontent',
                      'tv.iill.top','iptv8k.top']
-              #### 'zb.qc', '/vd', 'rtmp://', 'stream1', '/kkk.jjjj.', 'http://php.j', '4gtv.cnlive.club', 'video://https', 'epg.pw',  
-              #### 'youtube.com', 'tv.iill.top', 'audio', 'aktv-stream', 'api.kkitv', 'aktv.top', 'live4play.uk', 'vpstv.net', 'radio']    #, 'CHC', '/TV2/'
-              #### '21dtv', 'txmov2', 'gcw.bdcdn', 'metshop', 'shandong', 'goodiptv', '购物', '[', 'P3P', '腔', '曲', '//1', '/hls/', '/tsfile/', 
-              #### '春节', '网络收集', '95.179', 'hlspull', 'github', 'lunbo', 'tw.ts138', '//tvb', 'extraott', 
-              #### '22:8891', 'fanmingming', '43:22222', 'etv.xhgvip', 'free.xiptv', 'www.zhixun', 'xg.52sw', 'iptv.yjxfz.com', 
-              ####  'epg', 'mitv', 'udp', 'rtp', 'P2p', 'p2p', 'p3p', 'P2P', 'P3p', 'php.jdshipin', '9930/qilu', 'gitcode.net', '151:99',
+
 # 定义一个包含所有要提取的关键词的列表
 extract_keywords = ['珠江', '东莞', '广州', '佛山', '广东新闻', 
                     '翡翠台','有线新闻','无线新闻','TVB翡翠','TVB明珠','NOW新闻','Now','无线华丽','TVB星河','TVB-Plus',
@@ -593,8 +588,8 @@ def main(input_file, output_file):
 
 if __name__ == "__main__":
     # 请修改这里的文件名
-    INPUT_FILE = "网络收集.txt"
-    OUTPUT_FILE = "网络收集.txt"  # 不要与输入文件同名，防止数据丢失
+    INPUT_FILE = "网络收集1.txt"
+    OUTPUT_FILE = "网络收集1.txt"  # 不要与输入文件同名，防止数据丢失
     
     main(INPUT_FILE, OUTPUT_FILE)
 
