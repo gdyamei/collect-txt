@@ -236,9 +236,8 @@ def filter_and_sort_text_playlist(input_file, output_file):
         print(f"❌ 错误：找不到输入文件 {input_file}")
         return
 
-    # 初始化每个分类的容器（用 dict 兼顾去重：{链接: 完整行文本}）
+    # 【修改点 1】初始化每个分类的容器，不再添加 "未分类其他" 兜底分类
     classified_data = {cat: {} for cat in categories}
-   ####  classified_data["未分类其他"] = {} # 兜底分类
     
     with open(input_file, 'r', encoding='utf-8') as infile:
         for line in infile:
@@ -260,14 +259,15 @@ def filter_and_sort_text_playlist(input_file, output_file):
                 link = parts[1]
                 
                 # 3. 判断属于哪个分类
-                matched_cat = "未分类其他"
+                matched_cat = None  # 【修改点 2】默认设为 None
                 for cat, keywords in categories.items():
                     if any(k.lower() in channel_name for k in keywords):
                         matched_cat = cat
                         break
                 
-                # 放入对应分类（自动去重相同链接）
-                classified_data[matched_cat][link] = line_strip
+                # 【修改点 3】如果命中了已有的四大分类则放入对应容器，未命中的直接丢弃
+                if matched_cat:
+                    classified_data[matched_cat][link] = line_strip
 
     # 4. 写入新文件
     total_count = 0
