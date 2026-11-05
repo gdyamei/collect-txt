@@ -206,7 +206,7 @@ import os
 excluded_keywords = ['http://[', 'p3p://', 'rtmp://', 'http://php.j', '/kkk.jjjj.', 'stream1', '61.221.215.25:8800', 'epg.pw', '4gtv.cnlive.club', 'playtv-live.ifeng.com',                  
                      'video://https', '.xmcdn.com', 'radio', 'jnzq.ohoyee.com', 'free.', '221.7.175.154', 'audio', 'zmgd.zyrnet.com', 'satellitepull.cnr.cn/live/', 'gmxw.7766.org',
                      '122.152.202.33', 'psyl11.dyndns.tv', 'youtube.com', 'xhyx.gz.cn', 'aktv-stream', 'api.kkitv', 'aktv.top', 'live4play.uk', 'vpstv.net','raw.githubusercontent',
-                     'tv.iill.top','iptv8k.top','pull-hls-f11']
+                     'tv.iill.top','iptv8k.top','douyincdn.com']
 
 # 定义一个包含所有要提取的关键词的列表
 extract_keywords = ['珠江', '广东新闻', '广东民生', '广州影视', '广州新闻', '广州综合', '佛山公共', '佛山影视', '佛山综合', '东莞', 
