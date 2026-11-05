@@ -215,7 +215,7 @@ excluded_keywords = [
     'audio', '://zyrnet.com', 'satellitepull.cnr.cn/live/', 'gmxw.7766.org',
     '122.152.202.33', 'psyl11.dyndns.tv', 'youtube.com', 'xhyx.gz.cn', 'aktv-stream', 
     'api.kkitv', 'aktv.top', 'live4play.uk', 'vpstv.net', 'raw.githubusercontent',
-    'tv.iill.top', 'iptv8k.top', 'douyincdn.com','myalicdn.com','yy/1354931498','体育'
+    'tv.iill.top', 'iptv8k.top', 'douyincdn.com','myalicdn.com','yy/1354931498','体育','zhibo.hkstv.tv'
 ]
 excluded_keywords = [k.lower() for k in excluded_keywords]
 
@@ -238,7 +238,7 @@ def filter_and_sort_text_playlist(input_file, output_file):
 
     # 初始化每个分类的容器（用 dict 兼顾去重：{链接: 完整行文本}）
     classified_data = {cat: {} for cat in categories}
-    classified_data["未分类其他"] = {} # 兜底分类
+   ####  classified_data["未分类其他"] = {} # 兜底分类
     
     with open(input_file, 'r', encoding='utf-8') as infile:
         for line in infile:
