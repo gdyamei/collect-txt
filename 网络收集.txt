@@ -210,6 +210,9 @@ TVB无线新闻,http://173.208.234.146/live/inews.m3u8
 民视,https://7612-5516-affc-d88b.kylintv.tv/live/formosatv_iphone.m3u8
 
 频道,#genre#
+凤凰中文,http://156.238.224.170:7001/fhx.php?id=cn
+
+频道,#genre#
 千禧经典,http://tv.cloudcdn.me:80/live.ts?uid=4280&deviceMac=00:1A:79:17:C1:7F&channelId=133057
 中天亚洲,http://tv.cloudcdn.me:80/live.ts?uid=4280&deviceMac=00:1A:79:17:C1:7F&channelId=133119
 凤凰中文,http://tv.cloudcdn.me:80/live.ts?channelId=133041&uid=10223&deviceMac=00:1A:79:07:07:43
@@ -262,9 +265,18 @@ TVBS亚洲,http://38.64.72.148:80/hls/modn/list/4005/playlist.m3u8?
 大立电视,http://www.dalitv.com.tw:4568/live/dali/index.m3u8
 
 频道,#genre#
+民视,http://211.72.174.95:8115/0.ts
+
+频道,#genre#
 民视,http://37.27.111.214:8080/live/6/hls.m3u8
 龙华电影,http://37.27.111.214:8080/live/19/hls.m3u8
 华视新闻,http://37.27.111.214:8080/live/8/hls.m3u8
+
+频道,#genre#
+民视新闻,http://211.72.174.95:8117/0.ts
+
+频道,#genre#
+东森新闻,http://211.72.174.95:8138/0.ts
 
 频道,#genre#
 东森新闻,https://d2jc41c1shgcol.cloudfront.net/live/EBCNews/playlist.m3u8
@@ -419,6 +431,9 @@ TVB翡翠剧集,http://iptv.4666888.xyz/iptv2A.php?id=33
 靖天电影台,http://iptv.4666888.xyz/iptv2A.php?id=53
 龙华洋片,http://iptv.4666888.xyz/iptv2A.php?id=57
 龙华洋片,http://iptv.4666888.xyz/iptv2A.php?id=60
+
+频道,#genre#
+东森电影,http://mytv.cdn.com.mp/live/dsdy/stream.m3u8
 
 频道,#genre#
 东森电影,http://1b6467f415.iok.la:9931/tsfile/live/1043_1.m3u8
@@ -578,6 +593,9 @@ TVB无线新闻,http://mtayeh.ottb.xyz/live/774710333494/659822672281/58596.ts
 凤凰资讯,http://122.117.71.103:8573/http/61.222.53.250:8078/hls/20/80/phoenixif.m3u8
 
 频道,#genre#
+凤凰资讯,http://218.202.220.2:5000/nn_live.ts?id=FHZX
+
+频道,#genre#
 凤凰资讯,http://ali.hlspull.yximgs.com/live/l3w1tt2dkzvpukruupu002-golive.flv
 凤凰资讯,https://ali.hlspull.yximgs.com/live/qq491695550-fh.flv
 翡翠台,http://ali.hlspull.yximgs.com/live/l3w1tt2dkzvpukkliu64ah005-golive.flv
@@ -698,6 +716,9 @@ RTHK31,http://cdn.123.rr.kg/163189/rthk31
 RTHK32,http://cdn.123.rr.kg/163189/rthk32
 
 频道,#genre#
+VIU,http://m.osvs.asia:8000/bysid/99
+
+频道,#genre#
 NOW新闻,https://fast.hidns.vip/163189/now
 RTHK32,https://fast.hidns.vip/163189/rthk32
 
@@ -706,6 +727,9 @@ TVBS新闻,http://125.227.210.55:8186/VideoInput/play.ts
 
 频道,#genre#
 TVBS亚洲,http://15611-huge.cdn-o2.me/live/4b1cb29e33/9ea2b8c5e827/500947.ts
+
+频道,#genre#
+美亚电影,https://live.tvfix.org/live/mydy/index.m3u8
 
 频道,#genre#
 千禧经典,https://cdn3.123.rr.kg/163189/tvbc
@@ -842,6 +866,9 @@ RTHK32,https://cdn5.163189.xyz/live/rthk32/stream.m3u8
 广东珠江,http://36.105.100.208:35455/itv/2000000003000000033.m3u8?cdn=hnbblive
 
 频道,#genre#
+广东珠江,http://cdn2.163189.xyz/live/gdzj/stream.m3u8
+
+频道,#genre#
 广州影视,http://tencentplaybusiness.gztv.com/live/yingshi.m3u8
 广州新闻,https://tencentplaybusiness.gztv.com/live/xinwen.m3u8
 广州综合,https://tencentplaybusiness.gztv.com/live/zonghes.m3u8
@@ -933,6 +960,12 @@ VIUTV6,https://pull-mpeg-hs-cny-f5.douyincdn.com/live/viu6-8gdcevMEDtjXMHhJXHP7z
 东莞生活资讯,http://stream.sun0769.com/dgrtv1/mp4tv2_800.flv
 
 频道,#genre#
+公视,http://211.72.174.95:8116/0.ts
+
+频道,#genre#
+凤凰资讯,http://c.123.rr.kg/163189/fhzx
+
+频道,#genre#
 南国都市,http://zb.hmysapp.cn:802/dft/guangdong/guangzhou.php?id=shenghuo
 广州新闻,http://zb.hmysapp.cn:802/dft/guangdong/guangzhou.php?id=xinwen
 广州综合,http://zb.hmysapp.cn:802/dft/guangdong/guangzhou.php?id=zhonghe
@@ -944,9 +977,27 @@ VIUTV6,https://pull-mpeg-hs-cny-f5.douyincdn.com/live/viu6-8gdcevMEDtjXMHhJXHP7z
 广州综合,https://tencentplaygsm.gztv.com/live/zonghes.m3u8?txTime=65797c44&txSecret=7e4590b2320037d7ce49ce9eac2dd6c0
 
 频道,#genre#
+台视,http://211.72.174.95:8112/0.ts
+
+频道,#genre#
 广东新闻台,http://mg.hmysapp.cn:177/gdtv.php?id=45
 广东民生台,http://mg.hmysapp.cn:177/gdtv.php?id=48
 广东珠江台,http://mg.hmysapp.cn:177/gdtv.php?id=44
+
+频道,#genre#
+广东珠江频道,http://47.103.64.145:8014/639731952
+
+频道,#genre#
+广东珠江频道,http://222.213.105.65:7788/639731952
+
+频道,#genre#
+广东珠江频道,http://113.98.11.46:3000/639731952
+
+频道,#genre#
+翡翠台4K(字幕),http://o11.163189.xyz/stream/tvb/fct4k/
+
+频道,#genre#
+华视,http://211.72.174.95:8114/0.ts
 
 频道,#genre#
 龙华偶像,https://cdn.qd.je/163189/lhox
