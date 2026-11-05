@@ -25,7 +25,7 @@ from translate import Translator  # 导入Translator类,用于文本翻译
 ## 定义txt文件的URL列表
 urls = [
        'https://raw.githubusercontent.com/kimwang1978/collect-txt/refs/heads/main/bbxx365.txt',
-       'https://raw.githubusercontent.com/zengzifeng520/china-iptv-sources/refs/heads/main/output/live.txt'
+       ''   #https://raw.githubusercontent.com/zengzifeng520/china-iptv-sources/refs/heads/main/output/live.txt'
 ]
 # 合并文件的函数
 def merge_txt_files(urls, output_filename='汇总.txt'):
@@ -161,7 +161,7 @@ import os
 excluded_keywords = ['epg', 'mitv', 'udp', 'rtp', 'P2p', 'p2p', 'p3p', 'P2P', 'P3p', 'php.jdshipin', '9930/qilu', 'gitcode.net', '151:99', 
                      '21dtv', 'txmov2', 'gcw.bdcdn', 'metshop', 'shandong', 'goodiptv', '购物', '[', 'P3P', '腔', '曲', '//1', '/hls/', '/tsfile/', 
                      '春节', '网络收集', '95.179', 'hlspull', 'github', 'lunbo', 'tw.ts138', '//tvb', 'extraott', 
-                     '22:8891', 'fanmingming', '43:22222', 'etv.xhgvip', 'free.xiptv', 'www.zhixun', 'xg.52sw', 'iptv.yjxfz.com', 
+                     '22:8891', 'fanmingming', '43:22222', 'etv.xhgvip', 'free.xiptv', 'www.zhixun', 'xg.52sw', 'iptv.yjxfz.com','rtmp://', 
                      'zb.qc', '/vd', '/TV2/', 'stream1', '/kkk.jjjj.', 'http://php.j', '4gtv.cnlive.club', 'video://https', 'epg.pw',  
                      'youtube.com', 'tv.iill.top', 'audio', 'aktv-stream', 'api.kkitv', 'aktv.top', 'live4play.uk', 'vpstv.net', 'radio']    #, 'CHC', '/TV2/'
 # 定义一个包含所有要提取的关键词的列表
@@ -508,7 +508,7 @@ if __name__ == "__main__":
 
 
 
-
+############################################################################################################################################
 
 import re
 from pypinyin import lazy_pinyin
