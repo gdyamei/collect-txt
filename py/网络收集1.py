@@ -289,9 +289,26 @@ filter_and_sort_text_playlist('2.txt', '网络收集.txt')
 
 
 
+import datetime
+now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
+current_time = now.strftime("%Y/%m/%d %H:%M")
+# 打开文本文件并将时间添加到开头
+file_path = "网络收集.txt"
+with open(file_path, 'r+', encoding='utf-8') as f:
+    content = f.read()
+    f.seek(0, 0)
+    f.write(f'{current_time}更新,#genre#\n{content}')
+   ##### f.write(f'虚情的爱,https://vd2.bdstatic.com/mda-mi1dd05gmhwejdwn/sc/cae_h264/1630576203346678103/mda-mi1dd05gmhwejdwn.mp4\n{content}')
+       
 
-
-
+################################################################################################任务结束，删除不必要的过程文件
+files_to_remove = ["2.txt", "汇总.txt"]
+for file in files_to_remove:
+    if os.path.exists(file):
+        os.remove(file)
+    else:              # 如果文件不存在，则提示异常并打印提示信息
+        print(f"文件 {file} 不存在，跳过删除。")
+print("任务运行完毕，频道列表可查看文件夹内源.txt文件！")
 
 
 
