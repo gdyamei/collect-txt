@@ -339,8 +339,6 @@ remove_duplicates('网络收集.txt', '网络收集.txt')
 
 ######################连通性检测
 
-
-
 import requests
 import time
 import cv2
@@ -420,20 +418,92 @@ if __name__ == "__main__":
 
 
 
+import re
+from pypinyin import lazy_pinyin
+# 打开一个utf-8编码的文本文件
+with open("网络收集.txt", "r", encoding="utf-8") as file:
+    # 读取所有行并存储到列表中
+    lines = file.readlines()
+# 定义一个函数，用于提取每行的第一个数字
+def extract_first_number(line):
+    match = re.search(r'\d+', line)
+    return int(match.group()) if match else float('inf')
+# 对列表中的行进行排序，按照第一个数字的大小排列，其余行按中文排序
+sorted_lines = sorted(lines, key=lambda x: (not 'CCTV' in x, extract_first_number(x) if 'CCTV' in x else lazy_pinyin(x.strip())))
+# 将排序后的行写入新的utf-8编码的文本文件
+with open("网络收集.txt", "w", encoding="utf-8") as file:
+    for line in sorted_lines:
+        file.write(line)
+
+
+
+
+def parse_file(input_file_path, output_file_name):    #
+    # 正则表达式匹配从'//'开始到第一个'/'或第一个'::'结束的部分
+    ip_or_domain_pattern = re.compile(r'//([^/:]*:[^/:]*::[^/:]*|[^/]*)')
+    # 用于存储每个IP或域名及其对应的行列表
+    ip_or_domain_to_lines = {}
+    # 用于生成分类名的字母和数字计数器
+    alphabet_counter = 0  # 字母计数器，从0开始
+    number_counter = 1     # 数字计数器，从1开始
+    # 读取原始文件内容
+    with open(input_file_path, 'r', encoding='utf-8') as file:
+        for line in file:
+            line = line.strip()
+            # 如果行是分类标签行，则跳过
+            if ",#genre#" in line:
+                continue
+            # 检查行是否包含IP或域名
+            match = ip_or_domain_pattern.search(line)
+            if match:
+                # 提取匹配到的IP或域名
+                matched_text = match.group(1)
+                # 去除IP或域名后的剩余部分，只保留匹配到的IP或域名
+                ip_or_domain = matched_text.split('://')[-1].split('/')[0].split('::')[0]
+                # 将行添加到对应的IP或域名列表中
+                if ip_or_domain not in ip_or_domain_to_lines:
+                    ip_or_domain_to_lines[ip_or_domain] = []
+                ip_or_domain_to_lines[ip_or_domain].append(line)
+    # 过滤掉小于1000字节的IP或域名段
+    filtered_ip_or_domain_to_lines = {ip_or_domain: lines for ip_or_domain, lines in ip_or_domain_to_lines.items()
+                                      if sum(len(line) for line in lines) >= 250}   # 过滤掉小于1000字节的IP或域名段
+    # 如果没有满足条件的IP或域名段，则不生成文件
+    if not filtered_ip_or_domain_to_lines:
+        print("没有满足条件的IP或域名段，不生成文件。")
+        return
+    # 合并所有满足条件的IP或域名的行到一个文件
+############################################################
+    with open(output_file_name, 'w', encoding='utf-8') as output_file:   #output_
+        for ip_or_domain, lines in filtered_ip_or_domain_to_lines.items():
+            # 检查是否需要递增数字计数器
+            if alphabet_counter >= 26:
+                number_counter += 1
+                alphabet_counter = 0  # 重置字母计数器          
+ ######################################################              
+            # 生成分类名
+            genre_name = chr(65 + alphabet_counter)# + str(number_counter)
+            output_file.write(f"港澳{genre_name}组,#genre#\n")
+            for line in lines:
+                output_file.write(line + '\n')
+            output_file.write('\n')  # 在每个小段后添加一个空行作为分隔
+            alphabet_counter += 1  # 递增字母计数器
+# 调用函数并传入文件路径和输出文件名
+parse_file('网络收集.txt', '网络收集.txt')
+
 
 
 
 
 import datetime
 now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
-current_time = now.strftime("%Y/%m/%d %H:%M")
+current_time = now.strftime("%Y/%m/%d %H:%M:%S")
 # 打开文本文件并将时间添加到开头
 file_path = "网络收集.txt"
 with open(file_path, 'r+', encoding='utf-8') as f:
     content = f.read()
     f.seek(0, 0)
     f.write(f'{current_time}更新,#genre#\n{content}')
-#######    f.write(f'虚情的爱,https://vd2.bdstatic.com/mda-mi1dd05gmhwejdwn/sc/cae_h264/1630576203346678103/mda-mi1dd05gmhwejdwn.mp4\n{content}')
+   ########## f.write(f'虚情的爱,https://vd2.bdstatic.com/mda-mi1dd05gmhwejdwn/sc/cae_h264/1630576203346678103/mda-mi1dd05gmhwejdwn.mp4\n{content}')
        
 
 ################################################################################################任务结束，删除不必要的过程文件
