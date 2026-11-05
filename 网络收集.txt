@@ -1,4 +1,4 @@
-2026/11/05 15:52:01更新,#genre#
+2026/11/05 16:00更新,#genre#
 港澳A组,#genre#
 LIVE三立,https://d2jc41c1shgcol.cloudfront.net/live/setnewsrtmp/playlist.m3u8
 TVBS新闻,https://d2jc41c1shgcol.cloudfront.net/live/tvbsnewsqt/playlist.m3u8
