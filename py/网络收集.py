@@ -341,140 +341,82 @@ remove_duplicates('网络收集.txt', '网络收集.txt')
 
 
 
+import requests
+import time
+import cv2
+from urllib.parse import urlparse
+from tqdm import tqdm
 
-import asyncio
-import re
-from pypinyin import lazy_pinyin
-import aiohttp
+# 测试HTTP连接并尝试下载数据
+def test_connectivity_and_download(url, initial_timeout=1, retry_timeout=1):
+    parsed_url = urlparse(url)
+    if parsed_url.scheme not in ['http', 'https']:
+        # 非HTTP(s)协议，尝试RTSP检测
+        return test_rtsp_connectivity(url, retry_timeout)
+    else:
+        # HTTP(s)协议，使用原始方法
+        try:
+            with requests.get(url, stream=True, timeout=initial_timeout) as response:
+                if response.status_code == 200:
+                    start_time = time.time()
+                    while time.time() - start_time < initial_timeout:
+                        chunk = response.raw.read(51200)  # 尝试下载1KB数据
+                        if chunk:
+                            return True  # 成功下载数据
+        except requests.RequestException as e:
+            print(f"请求异常: {e}")
+            pass #这行删掉则会在下载不到数据流的时候进行连通性测试
 
-# ==================== 1. 先进行排序清洗 ====================
-with open("网络收集.txt", "r", encoding="utf-8") as file:
-    lines = file.readlines()
+    return False  # 默认返回False
 
+print("/" * 80)
 
-def extract_first_number(line):
-    match = re.search(r"\d+", line)
-    return int(match.group()) if match else float("inf")
-
-
-# 过滤掉空行，按原逻辑排序
-lines = [line.strip() for line in lines if line.strip()]
-sorted_lines = sorted(
-    lines,
-    key=lambda x: (
-        not "CCTV" in x,
-        extract_first_number(x) if "CCTV" in x else lazy_pinyin(x),
-    ),
-)
-
-
-# ==================== 2. 异步连通性检测 ====================
-async def check_url_valid(session, url, timeout=3):
-    """检测单个URL是否可以连通（超时时间3秒）"""
-    try:
-        # 使用 HEAD 请求可以节省流量和时间，若服务器不支持则尝试 GET
-        async with session.head(url, timeout=timeout, allow_redirects=True) as response:
-            if response.status < 400:
-                return True
-        async with session.get(url, timeout=timeout, allow_redirects=True) as response:
-            return response.status < 400
-    except Exception:
+# 测试RTSP连接并尝试读取流
+def test_rtsp_connectivity(url, timeout=3):
+    cap = cv2.VideoCapture(url)
+    if not cap.isOpened():
         return False
+    start_time = time.time()
+    while time.time() - start_time < timeout:
+        ret, _ = cap.read()
+        if ret:
+            return True  # 成功读取帧
+    cap.release()
+    return False
 
+# 主函数
+def main(输入, 输出):
+    with open(输入, "r", encoding="utf-8") as source_file:
+        lines = source_file.readlines()
 
-async def filter_valid_lines(lines_list):
-    """并发检测所有行中的有效链接"""
-    valid_lines = []
-    # 正则提取 http/https/rtmp 等链接
-    url_pattern = re.compile(r"https?://[^\s,]+")
+    results = []
+    for line_number, line in enumerate(tqdm(lines, desc="检测中")):
+        parts = line.strip().split(",")
+        if len(parts) == 2 and parts[1]:  # 确保有URL，并且URL不为空
+            channel_name, channel_url = parts
+            try:
+                is_valid = test_connectivity_and_download(channel_url)
+            except Exception as e:
+                print(f"检测URL {channel_url} 时发生错误: {e}")
+                is_valid = False  # 将异常的URL视为无效
 
-    async with aiohttp.ClientSession() as session:
-        tasks = []
-        for line in lines_list:
-            if ",#genre#" in line:
-                continue
-            match = url_pattern.search(line)
-            if match:
-                url = match.group(0)
-                # 创建并发检测任务
-                tasks.append((line, check_url_valid(session, url)))
-            else:
-                # 没有链接的行（如果是纯文本或格式错误）直接跳过
-                pass
+            status = "有效" if is_valid else "无效"
 
-        # 批量执行
-        print(f"正在检测 {len(tasks)}个 链接的连通性...")
-        results = await asyncio.gather(*(t[1] for t in tasks))
+            if "genre" in line.lower() or status == "有效":
+                results.append((channel_name.strip(), channel_url.strip(), status))
 
-        for (line, _), is_valid in zip(tasks, results):
-            if is_valid:
-                valid_lines.append(line)
+    # 写入文件
+    with open(输出, "w", encoding="utf-8") as output_file:
+        for channel_name, channel_url, status in results:
+            output_file.write(f"{channel_name},{channel_url}\n")
 
-    print(f"检测完成！有效链接：{len(valid_lines)}/{len(tasks)}")
-    return valid_lines
+    print(f"任务完成, 有效源数量: {len([x for x in results if x[2] == '有效'])}, 无效源数量: {len([x for x in results if x[2] == '无效'])}")
 
-
-# ==================== 3. 按IP/域名聚合输出 ====================
-def parse_and_group(valid_lines, output_file_name):
-    ip_or_domain_pattern = re.compile(r"//([^/:]*:[^/:]*::[^/:]*|[^/]*)")
-    ip_or_domain_to_lines = {}
-
-    alphabet_counter = 0
-    number_counter = 1
-
-    for line in valid_lines:
-        match = ip_or_domain_pattern.search(line)
-        if match:
-            matched_text = match.group(1)
-            ip_or_domain = (
-                matched_text.split("://")[-1].split("/")[0].split("::")[0]
-            )
-
-            if ip_or_domain not in ip_or_domain_to_lines:
-                ip_or_domain_to_lines[ip_or_domain] = []
-            ip_or_domain_to_lines[ip_or_domain].append(line)
-
-    # 过滤掉小于250字节的IP或域名段
-    filtered_groups = {
-        ip: lines
-        for ip, lines in ip_or_domain_to_lines.items()
-        if sum(len(line) for line in lines) >= 250
-    }
-
-    if not filtered_groups:
-        print("没有满足条件的有效IP或域名段，不生成文件。")
-        return
-
-    with open(output_file_name, "w", encoding="utf-8") as output_file:
-        for ip_or_domain, lines in filtered_groups.items():
-            if alphabet_counter >= 26:
-                number_counter += 1
-                alphabet_counter = 0
-
-            # 生成分类名
-            genre_name = chr(65 + alphabet_counter)
-            output_file.write(f"港澳{genre_name}组,#genre#\n")
-            for line in lines:
-                output_file.write(line + "\n")
-            output_file.write("\n")
-            alphabet_counter += 1
-
-
-# ==================== 主运行逻辑 ====================
 if __name__ == "__main__":
-    # 需要先安装 aiohttp: pip install aiohttp
-    try:
-        # 执行异步过滤
-        valid_lines = asyncio.run(filter_valid_lines(sorted_lines))
-        # 聚类并写入文件
-        parse_and_group(valid_lines, "网络收集.txt")
-    except RuntimeError:
-        # 兼容部分特定环境（如 Jupyter）
-        import nest_asyncio
+    输入 =  "网络收集.txt"    #input('请输入utf-8编码的直播源文件路径:')
+    输出 = "网络收集.txt"
+    main(输入, 输出)
 
-        nest_asyncio.apply()
-        valid_lines = asyncio.run(filter_valid_lines(sorted_lines))
-        parse_and_group(valid_lines, "网络收集.txt")
 
 
 
