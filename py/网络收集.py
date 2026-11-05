@@ -344,30 +344,29 @@ import time
 import cv2
 from urllib.parse import urlparse
 from tqdm import tqdm
+import os
 
 # 测试HTTP连接并尝试下载数据
-def test_connectivity_and_download(url, initial_timeout=1, retry_timeout=1):
+def test_connectivity_and_download(url, initial_timeout=2, retry_timeout=2):
     parsed_url = urlparse(url)
     if parsed_url.scheme not in ['http', 'https']:
         # 非HTTP(s)协议，尝试RTSP检测
         return test_rtsp_connectivity(url, retry_timeout)
     else:
-        # HTTP(s)协议，使用原始方法
+        # HTTP(s)协议
         try:
-            with requests.get(url, stream=True, timeout=initial_timeout) as response:
+            # 增加普遍的 User-Agent 避免被部分源屏蔽
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+            with requests.get(url, stream=True, timeout=initial_timeout, headers=headers) as response:
                 if response.status_code == 200:
                     start_time = time.time()
                     while time.time() - start_time < initial_timeout:
-                        chunk = response.raw.read(51200)  # 尝试下载1KB数据
+                        chunk = response.raw.read(2048)  # 修改为2KB，更容易满足读取条件
                         if chunk:
-                            return True  # 成功下载数据
-        except requests.RequestException as e:
-            print(f"请求异常: {e}")
-            pass #这行删掉则会在下载不到数据流的时候进行连通性测试
-
-    return False  # 默认返回False
-
-print("/" * 80)
+                            return True  # 成功下载到数据
+        except requests.RequestException:
+            pass 
+    return False
 
 # 测试RTSP连接并尝试读取流
 def test_rtsp_connectivity(url, timeout=3):
@@ -378,42 +377,80 @@ def test_rtsp_connectivity(url, timeout=3):
     while time.time() - start_time < timeout:
         ret, _ = cap.read()
         if ret:
+            cap.release()
             return True  # 成功读取帧
     cap.release()
     return False
 
 # 主函数
-def main(输入, 输出):
-    with open(输入, "r", encoding="utf-8") as source_file:
+def main(input_path, output_path):
+    if not os.path.exists(input_path):
+        print(f"错误：输入文件 {input_path} 不存在！")
+        return
+
+    with open(input_path, "r", encoding="utf-8") as source_file:
         lines = source_file.readlines()
 
     results = []
-    for line_number, line in enumerate(tqdm(lines, desc="检测中")):
-        parts = line.strip().split(",")
-        if len(parts) == 2 and parts[1]:  # 确保有URL，并且URL不为空
-            channel_name, channel_url = parts
+    valid_count = 0
+    invalid_count = 0
+
+    for line in tqdm(lines, desc="检测中"):
+        line_str = line.strip()
+        if not line_str:
+            continue
+            
+        # 优先判断是否为分类行（包含 genre），如果是，直接保留不进行网络检测
+        if "genre" in line_str.lower():
+            results.append(line_str)
+            continue
+
+        parts = line_str.split(",")
+        if len(parts) >= 2:
+            channel_name = parts[0].strip()
+            # 考虑到 URL 中可能包含逗号，拼接剩余部分
+            channel_url = ",".join(parts[1:]).strip() 
+            
+            if not channel_url:
+                results.append(line_str) # 空URL行保留原样
+                continue
+
             try:
                 is_valid = test_connectivity_and_download(channel_url)
             except Exception as e:
-                print(f"检测URL {channel_url} 时发生错误: {e}")
-                is_valid = False  # 将异常的URL视为无效
+                print(f"\n检测URL {channel_url} 时发生错误: {e}")
+                is_valid = False
 
-            status = "有效" if is_valid else "无效"
-
-            if "genre" in line.lower() or status == "有效":
-                results.append((channel_name.strip(), channel_url.strip(), status))
+            if is_valid:
+                status = "有效"
+                valid_count += 1
+                # 核心安全修改：只将有效源写入结果，或者你想保留无效源在行末加注释？
+                # 这里采用你原本的逻辑：只保留有效源和分类行
+                results.append(f"{channel_name},{channel_url}")
+            else:
+                status = "无效"
+                invalid_count += 1
+                # 如果你想在文件中保留无效源供日后参考，可以取消注释下面这行：
+                # results.append(f"{channel_name},{channel_url} # 无效") 
+        else:
+            # 不符合标准格式的行（如杂质行、单行注释等）原样保留
+            results.append(line_str)
 
     # 写入文件
-    with open(输出, "w", encoding="utf-8") as output_file:
-        for channel_name, channel_url, status in results:
-            output_file.write(f"{channel_name},{channel_url}\n")
+    with open(output_path, "w", encoding="utf-8") as output_file:
+        for item in results:
+            output_file.write(f"{item}\n")
 
-    print(f"任务完成, 有效源数量: {len([x for x in results if x[2] == '有效'])}, 无效源数量: {len([x for x in results if x[2] == '无效'])}")
+    print(f"\n任务完成！")
+    print(f"有效源数量: {valid_count}")
+    print(f"已过滤无效源数量: {invalid_count}")
+    print(f"结果已保存至: {output_path}")
 
 if __name__ == "__main__":
-    输入 =  "网络收集.txt"    #input('请输入utf-8编码的直播源文件路径:')
-    输出 = "网络收集.txt"
-    main(输入, 输出)
+    输入文件 = "网络收集.txt"
+    # 强烈建议输出到新文件，确认无误后再手动覆盖，防止误删数据
+    输出文件 = "网络收集.txt" 
+    main(输入文件, 输出文件)
 
 
 
