@@ -351,7 +351,8 @@ def test_connectivity_and_download(url, initial_timeout=2, retry_timeout=2):
     parsed_url = urlparse(url)
     if parsed_url.scheme not in ['http', 'https']:
         # 非HTTP(s)协议，尝试RTSP检测
-        return test_rtsp_connectivity(url, retry_timeout)
+   ####     return test_rtsp_connectivity(url, retry_timeout)
+       return False
     else:
         # HTTP(s)协议
         try:
