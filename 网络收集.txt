@@ -624,6 +624,7 @@ ViuTVsix,http://cdn10.123.rr.kg/163189/viu6/
 美亚电影,http://ali.hlspull.yximgs.com/live/awei_mydy.flv
 美亚电影,http://iptv.4666888.xyz/iptv2A.php?id=30
 美亚电影,https://live.tvfix.org/live/mydy/index.m3u8
+翡翠剧集台,http://cdn6.123.rr.kg/163189/tvbd
 翡翠台(WebVTT字幕),http://cdn10.123.rr.kg/163189/fct/
 翡翠台(字幕),http://cdn3.123.rr.kg/stream/tvb/fct/
 翡翠台,http://116.77.33.98:44330/tsfile/live/1008_1.m3u8?key=txiptv&playlive=0&authid=0
@@ -831,7 +832,7 @@ LIVE三立,https://d2jc41c1shgcol.cloudfront.net/live/setnewsrtmp/playlist.m3u8
 龙华电影,https://test.946985.filegear-sg.me/proxy/3e25c26d79d21d2d
 龙华经典,https://cdn.qd.je/163189/lhjd
 
-其他新加坡 ,#genre#
+新加坡 ,#genre#
 Fox新闻,https://fox-foxnewsnow-samsungus.amagi.tv/playlist720p.m3u8
 新加坡CNA,https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index.m3u8
 新加坡国际,http://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m3u8
@@ -923,7 +924,6 @@ DJ舞曲《闯天涯》,https://vd2.bdstatic.com/mda-mjf3hahmam95yfkd/sc/cae_h26
 湖南卫视,http://bztv.tvbus.cc:8081/cdnlive/hnws.m3u8
 湖南都市,http://156.238.253.62:5555/tvbox/公众号好享生活小助手/湖南.php?id=hnds
 甘肃卫视,http://bztv.tvbus.cc:8081/cdnlive/gsws.m3u8
-翡翠剧集台,http://cdn6.123.rr.kg/163189/tvbd
 莲花卫视,http://tvbox6.icu/tv/amlh.m3u8
 贵州卫视,http://183.3.134.56:9901/tsfile/live/0120_1.m3u8?key=tvbox6_com&playlive=1&authid=0
 贵州卫视,http://bztv.tvbus.cc:8081/cdnlive/gzws.m3u8
