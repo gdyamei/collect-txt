@@ -1,5 +1,15 @@
-2026/11/05 15:27:39更新,#genre#
+2026/11/05 15:34:40更新,#genre#
 港澳A组,#genre#
+LIVE三立,https://d2jc41c1shgcol.cloudfront.net/live/setnewsrtmp/playlist.m3u8
+TVBS新闻,https://d2jc41c1shgcol.cloudfront.net/live/tvbsnewsqt/playlist.m3u8
+东森新闻,https://d2jc41c1shgcol.cloudfront.net/live/EBCNews/playlist.m3u8
+华视新闻,https://d2jc41c1shgcol.cloudfront.net/live/ctsnewsqt/playlist.m3u8
+民视新闻,https://d2jc41c1shgcol.cloudfront.net/live/ftvnewsqt/playlist.m3u8
+三立新闻,https://d2jc41c1shgcol.cloudfront.net/live/iNEWS/playlist.m3u8
+中视新闻,https://d2jc41c1shgcol.cloudfront.net/live/ctvnewsqt/playlist.m3u8
+中天新闻,https://d2jc41c1shgcol.cloudfront.net/live/CtiNEWS1/playlist.m3u8
+
+港澳B组,#genre#
 TVB明珠,https://cdn6.cc.cd/163189/mzt
 TVB无线新闻,https://cdn6.cc.cd/163189/wxxw
 TVB星河,https://cdn6.cc.cd/163189/tvbxh
@@ -10,11 +20,33 @@ TVB娱乐新闻,https://cdn6.cc.cd/163189/ylxw
 凤凰中文,https://cdn6.cc.cd/163189/fhzw
 凤凰资讯,https://cdn6.cc.cd/163189/fhzx
 
-港澳B组,#genre#
-TVBS新闻,https://d2jc41c1shgcol.cloudfront.net/live/tvbsnewsqt/playlist.m3u8
-东森新闻,https://d2jc41c1shgcol.cloudfront.net/live/EBCNews/playlist.m3u8
-华视新闻,https://d2jc41c1shgcol.cloudfront.net/live/ctsnewsqt/playlist.m3u8
-三立新闻,https://d2jc41c1shgcol.cloudfront.net/live/iNEWS/playlist.m3u8
-中视新闻,https://d2jc41c1shgcol.cloudfront.net/live/ctvnewsqt/playlist.m3u8
-中天新闻,https://d2jc41c1shgcol.cloudfront.net/live/CtiNEWS1/playlist.m3u8
+港澳C组,#genre#
+VIUTV,https://pull-mpeg-hs-cny-f5.douyincdn.com/live/viu-WaLq7QU9ShukSHJr4y4T8i0dBsztO66q6niwBKsG86utDGp8t7H3cr1oB0VrNxkL9efg3iOLGlGf8AfS.flv
+VIUTV6,https://pull-mpeg-hs-cny-f5.douyincdn.com/live/viu6-8gdcevMEDtjXMHhJXHP7ziGkkBezFqkpFtA72x8msWRDKvudDTC1VXpsTgqVF2DObATSVpEhjQjy9RnI.flv
+翡翠台,https://pull-mpeg-hs-cny-f5.douyincdn.com/live/fc-LMbEPJe5MloHcHvTs0DXowNztiTYo2GRWYiVFay2sAZ2aS0fGq5Kt0DDbOEz7DNrVLal4xICqjotPlDR.flv
+凤凰澳门,https://pull-mpeg-hs-cny-f5.douyincdn.com/live/asam-72slNpB3YKieJl16U6kUJ6eV1ryY3vGoywX5YFhg57EnKULe244lasFRQ56yCYaoxtueQb7nHOgLGvw0iS4rt4.flv
+凤凰香港台,https://pull-mpeg-hs-cny-f5.douyincdn.com/live/fhxg-pfQICPKiV4U731Z1k4gwAPLKfPEUIDdeUedSzFdZYr86PbJWljfhTW7Z8Ag7Ko72iYLfXQ4vKvIcJFdu.flv
+凤凰中文台,https://pull-mpeg-hs-cny-f5.douyincdn.com/live/fhzw-JLSQd0HGiHW8D1wqNCfqBYXgtxAa6RjW4367c0JIz5SEWvxG6IZbvzY8cv7UVu11G27CxoDX3eGpuFFR.flv
+凤凰资讯台,https://pull-mpeg-hs-cny-f5.douyincdn.com/live/fhzx-lR9PJIgWTKkqxG30JzDoE7kx8hDmBCG5PRPdi3sEpkz2bYnGHiVXzgeRvsgtCJpNma2tOEBFVeHKbXyd.flv
+无线新闻,https://pull-mpeg-hs-cny-f5.douyincdn.com/live/wxxw-3KNpWhZ0lSaCroTIRf32AqSYbUwjAwyruHsc0KnmLY9yXhj7rXECcu39xKd5mFXyUsByfemjtbwjXDeC.flv
+
+港澳D组,#genre#
+广州南国都市,https://tencentplay.gztv.com/live/nanguodushi.m3u8?txSecret=babbcbacdbcf13a3311a264e4dd66b8d&txTime=191b60b41a7
+广州新闻,https://tencentplay.gztv.com/live/xinwen.m3u8?txSecret=6f73647cae387d01a3c2132074132a83&txTime=18d00acf487
+广州新闻,https://tencentplay.gztv.com/live/xinwen.m3u8?txSecret=c651b79c107d9cde3914d011cbb896a6&txTime=190def3c97d
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=18398d13f0baf6bcc29c490266d38d0b&txTime=18dff22cf4d
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=1b3fcaebe0459e7ca2876c2d5493cfac&txTime=18d047b699e
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=439b0fd2cf766b363c93a59cbcbe1370&txTime=18d00acf488
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=48f6c06c32931ed1c2376b21ce91640c&txTime=18d1f31b604
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=8554699d06aed3f21425480824c75408&txTime=19095f3cb9c
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=870cb528156f761b62bf8b8a7eec176a&txTime=18f4b58d76a
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=9dd8bdb55106c41c87ad50d630b092dd&txTime=18d151ac310
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=9e5008d4b91944fa76a957a93ae54870&txTime=1903e5f1cfd
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=a484293b0e6036fb053179bdffaf7127&txTime=18e0d9e3c22
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=aae0358e06f64d4db4d663321a3fa964&txTime=190def4db74
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=ae488fe9d79a8f3de023521ce7ce0766&txTime=18f2ea2cacf
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=c8dbe86d6f86eb1a21999ab479fd5667&txTime=18d3c4690e8
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=e381ab098841a0badbf7e11f24143cf7&txTime=18e6ff43701
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=e4115b603801e53725e7debad2d4f5da&txTime=18dcb681fec
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=f0147ae6453a80f5989f382368b72aad&txTime=18d00acf487
 
