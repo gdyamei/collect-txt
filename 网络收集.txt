@@ -1,9 +1,10 @@
-2026/11/05 12:10:06更新,#genre#
+2026/11/05 12:21:33更新,#genre#
 港澳A组,#genre#
 NOW新闻,http://45.192.97.170:8880/play/622.m3u8
 RTHK32,http://45.192.97.170:8880/play/1203.m3u8
 TVBS欢乐,http://45.192.97.170:8880/play/1327.m3u8
 澳门莲花,http://45.192.97.170:8880/play/1208.m3u8
+八大精彩,http://45.192.97.170:8880/play/1329.m3u8
 广东珠江,http://45.192.97.170:8880/play/640.m3u8
 广州新闻,http://45.192.97.170:8880/play/682.m3u8
 广州综合,http://45.192.97.170:8880/play/681.m3u8
@@ -36,11 +37,14 @@ VIU,http://r.jdshipin.com/vSJvl
 广东珠江,http://r.jdshipin.com/sE5vO
 广州影视,http://r.jdshipin.com/TcKr2
 广州影视,http://r.jdshipin.com/sFw4S
+广州综合,http://r.jdshipin.com/iR6Gq
+广州综合,http://r.jdshipin.com/snhya
 无线新闻,http://r.jdshipin.com/CkuBd
 
 港澳C组,#genre#
 TVB明珠,http://tv.cloudcdn.me:80/live.ts?channelId=133058&uid=10223&deviceMac=00:1A:79:07:07:43
 TVB星河,http://tv.cloudcdn.me:80/live.ts?channelId=133057&uid=10223&deviceMac=00:1A:79:07:07:43
+TVB星河,http://tv.cloudcdn.me:80/live.ts?channelId=133059&uid=10223&deviceMac=00:1A:79:07:07:43
 TVB娱乐新闻,http://tv.cloudcdn.me:80/live.ts?channelId=132168&uid=10223&deviceMac=00:1A:79:07:07:43
 凤凰中文,http://tv.cloudcdn.me:80/live.ts?channelId=133041&uid=10223&deviceMac=00:1A:79:07:07:43
 凤凰资讯,http://tv.cloudcdn.me:80/live.ts?channelId=133100&uid=10223&deviceMac=00:1A:79:07:07:43
@@ -59,6 +63,14 @@ TVB娱乐新闻,https://cdn6.cc.cd/163189/ylxw
 凤凰资讯,https://cdn6.cc.cd/163189/fhzx
 
 港澳E组,#genre#
+TVB千禧经典,http://74.91.26.218:82/live/tvbjd.m3u8
+TVB星河,http://74.91.26.218:82/live/tvbxh.m3u8
+翡翠台,http://74.91.26.218:82/live/jade.m3u8
+广东新闻,http://74.91.26.218:82/live/gdxw.m3u8
+广东珠江,http://74.91.26.218:82/live/gdzj.m3u8
+美亚电影,http://74.91.26.218:82/live/mydy.m3u8
+
+港澳F组,#genre#
 TVB无线新闻,http://cdn.iptv8k.top/dl/jspd.php?id=2
 TVB无线新闻,https://cdn.iptv8k.top/dl/jspd.php?id=2&time=20240926215313&ip=111.229.253.40
 东森超视,https://cdn.iptv8k.top/dl/jrys.php?id=216&time=20240926215313&ip=111.229.253.40
@@ -73,12 +85,6 @@ TVB无线新闻,https://cdn.iptv8k.top/dl/jspd.php?id=2&time=20240926215313&ip=1
 三立台湾,https://cdn.iptv8k.top/dl/jrys.php?id=269&time=20240926215313&ip=111.229.253.40
 三立新闻,https://cdn.iptv8k.top/dl/jrys.php?id=273&time=20240926215313&ip=111.229.253.40
 中天新闻,http://cdn.iptv8k.top/dl/jspd.php?id=1
-
-港澳F组,#genre#
-TVB无线新闻,http://mag.trexlive.me:80/play/live.php?extension=ts&mac=00:1A:79:06:9A:77&stream=153399
-TVB无线新闻,http://mag.trexlive.me:80/play/live.php?extension=ts&mac=00:1A:79:7E:2F:ED&stream=153399
-凤凰资讯,http://mag.trexlive.me:80/play/live.php?extension=ts&mac=00:1A:79:7E:2F:ED&stream=114695
-凤凰资讯,http://mag.trexlive.me:80/play/live.php?extension=ts&mac=00:1A:79:7E:2F:ED&stream=156407
 
 港澳G组,#genre#
 TVB无线新闻,http://mtayeh.ottb.xyz/live/774710333494/659822672281/58592.ts
@@ -114,19 +120,29 @@ TVB星河1,http://cdn3.123.rr.kg/stream/live/tvbxh/
 天映频道,http://cdn3.123.rr.kg/stream/live/typd/
 
 港澳J组,#genre#
-广东珠江,http://gslbmgsplive.miguvideo.com/migu/kailu/szxwzh/50/20250604/index.m3u8?msisdn=202611051122332d6052a0a7cf47d0b03c8efa7f371cdf&mdspid=&spid=600697&netType=0&sid=5910022410&pid=2028597139&timestamp=20261105112233&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=639731952&ParentNodeID=-99&assertID=5910022410&client_ip=2409:8a00:6040:4f61:356b:2cf8:7a09:3744&SecurityKey=20261105112233&promotionId=&mvid=5102012610&mcid=500020&playurlVersion=WX-A1-9.10.1-SNAPSHOT&userid=&jmhm=&videocodec=h264&appCode=miguvideo_android&bean=mgspad&tid=android&conFee=0&puData=54ef530fa447720420f6cd415787f5c9&ddCalcu=95c4e5e0ff975083705f1a44d4c767f20024
+东莞新闻,https://stream.sun0769.com/dgrtv1/mp4tv1_1500/index.m3u8
+东莞新闻综合,http://stream.sun0769.com/dgrtv1/mp4tv1_1500.flv
+东莞新闻综合,http://stream.sun0769.com/dgrtv1/mp4tv1_1500/index.m3u8
+东莞新闻综合,http://stream.sun0769.com/dgrtv1/mp4tv1_800.flv
+东莞新闻综合,http://stream.sun0769.com/dgrtv1/mp4tv1_800/index.m3u8
 
 港澳K组,#genre#
+广东珠江,http://gslbmgsplive.miguvideo.com/migu/kailu/szxwzh/50/20250604/index.m3u8?msisdn=202611051122332d6052a0a7cf47d0b03c8efa7f371cdf&mdspid=&spid=600697&netType=0&sid=5910022410&pid=2028597139&timestamp=20261105112233&Channel_ID=0116_2600000900-99000-201600010010027&ProgramID=639731952&ParentNodeID=-99&assertID=5910022410&client_ip=2409:8a00:6040:4f61:356b:2cf8:7a09:3744&SecurityKey=20261105112233&promotionId=&mvid=5102012610&mcid=500020&playurlVersion=WX-A1-9.10.1-SNAPSHOT&userid=&jmhm=&videocodec=h264&appCode=miguvideo_android&bean=mgspad&tid=android&conFee=0&puData=54ef530fa447720420f6cd415787f5c9&ddCalcu=95c4e5e0ff975083705f1a44d4c767f20024
+
+港澳L组,#genre#
 广州南国都市,https://tencentplay.gztv.com/live/nanguodushi.m3u8?txSecret=babbcbacdbcf13a3311a264e4dd66b8d&txTime=191b60b41a7
 广州新闻,http://tencentplay.gztv.com/live/xinwen.m3u8?txSecret=d2c2db0b598c02ec1b5623728434d367&txTime=18d57929bd3
 广州新闻,https://tencentplay.gztv.com/live/xinwen.m3u8?txSecret=6f73647cae387d01a3c2132074132a83&txTime=18d00acf487
 广州新闻,https://tencentplay.gztv.com/live/xinwen.m3u8?txSecret=c651b79c107d9cde3914d011cbb896a6&txTime=190def3c97d
 广州综合,http://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=c8dbe86d6f86eb1a21999ab479fd5667&txTime=18d3c4690e8
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=18398d13f0baf6bcc29c490266d38d0b&txTime=18dff22cf4d
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=1b3fcaebe0459e7ca2876c2d5493cfac&txTime=18d047b699e
 广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=439b0fd2cf766b363c93a59cbcbe1370&txTime=18d00acf488
 广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=48f6c06c32931ed1c2376b21ce91640c&txTime=18d1f31b604
 广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=8554699d06aed3f21425480824c75408&txTime=19095f3cb9c
 广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=870cb528156f761b62bf8b8a7eec176a&txTime=18f4b58d76a
 广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=9dd8bdb55106c41c87ad50d630b092dd&txTime=18d151ac310
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=9e5008d4b91944fa76a957a93ae54870&txTime=1903e5f1cfd
 广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=a484293b0e6036fb053179bdffaf7127&txTime=18e0d9e3c22
 广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=aae0358e06f64d4db4d663321a3fa964&txTime=190def4db74
 广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=ae488fe9d79a8f3de023521ce7ce0766&txTime=18f2ea2cacf
