@@ -289,6 +289,253 @@ filter_and_sort_text_playlist('2.txt', '网络收集.txt')
 
 
 
+import requests
+import time
+import cv2
+from urllib.parse import urlparse
+from tqdm import tqdm
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+# 配置常量
+
+HTTP_TIMEOUT = 3       # HTTP 连接超时时间 (秒)
+RTSP_TIMEOUT = 5       # RTSP 检测超时时间 (秒)
+MAX_WORKERS = 20       # 线程池大小，根据网络状况调整
+
+def test_http_connectivity(url, timeout=HTTP_TIMEOUT):
+    """
+    测试 HTTP/HTTPS 直播源连通性
+    """
+    try:
+        # stream=True 避免下载整个文件，只获取头部和少量数据
+        with requests.get(url, stream=True, timeout=timeout) as response:
+            if response.status_code == 200:
+                # 尝试读取一小块数据以确认流确实存在
+                for chunk in response.iter_content(chunk_size=1024):
+                    if chunk:
+                        return True
+                    break  # 只要读到一点数据就认为连通
+            else:
+                return False
+    except requests.RequestException:
+        return False
+    except Exception:
+        return False
+
+def test_rtsp_connectivity(url, timeout=RTSP_TIMEOUT):
+    """
+    测试 RTSP 直播源连通性
+    """
+    cap = None
+    try:
+        cap = cv2.VideoCapture(url)
+        # 设置超时属性 (部分后端支持)
+        cap.set(cv2.CAP_PROP_OPEN_TIMEOUT_MSEC, timeout * 1000)
+        
+        if not cap.isOpened():
+            return False
+        
+        start_time = time.time()
+        while time.time() - start_time < timeout:
+            ret, frame = cap.read()
+            if ret and frame is not None:
+                return True
+            # 短暂休眠，避免 CPU 空转
+            time.sleep(0.1)
+            
+        return False
+    except Exception:
+        return False
+    finally:
+        # 确保摄像头对象被释放
+        if cap is not None:
+            cap.release()
+
+def test_connectivity_and_download(url):
+    """
+    根据协议类型选择检测方法
+    """
+    if not url:
+        return False
+    
+    parsed_url = urlparse(url)
+    scheme = parsed_url.scheme.lower()
+    
+    if scheme in ['http', 'https']:
+        return test_http_connectivity(url)
+    elif scheme == 'rtsp':
+        return test_rtsp_connectivity(url)
+    else:
+        # 不支持的协议，视为无效
+        return False
+
+def process_line(line):
+    """
+    处理单行数据，返回 (name, url, is_valid) 或 None
+    """
+    line = line.strip()
+    if not line:
+        return None
+    
+    # 简单解析 CSV 格式: Name,URL
+    # 注意：如果名称中包含逗号，这种简单 split 会出错。
+    # 假设格式严格为 "名称,URL" 且 URL 中不含逗号
+    parts = line.split(",", 1)  # 最多分割一次，防止 URL 中有逗号
+    
+    if len(parts) != 2:
+        return None
+        
+    channel_name, channel_url = parts
+    channel_name = channel_name.strip()
+    channel_url = channel_url.strip()
+    
+    if not channel_url:
+        return None
+        
+    # 跳过元数据行 (如 #EXTINF)，除非你想保留它们
+    if channel_name.startswith('#'):
+        return None
+
+    try:
+        is_valid = test_connectivity_and_download(channel_url)
+    except Exception:
+        is_valid = False
+        
+    return (channel_name, channel_url, is_valid)
+
+def main(input_file, output_file):
+    print(f"开始读取文件: {input_file}")
+    try:
+        with open(input_file, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+    except FileNotFoundError:
+        print(f"错误: 文件 {input_file} 不存在")
+        return
+
+    valid_results = []
+    invalid_count = 0
+    total_lines = len(lines)
+    
+    print(f"共发现 {total_lines} 行，开始多线程检测...")
+    
+    # 使用线程池并行处理
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        # 提交所有任务
+        future_to_line = {executor.submit(process_line, line): line for line in lines if line.strip()}
+        
+        # 使用 tqdm 显示进度
+        for future in tqdm(as_completed(future_to_line), total=len(future_to_line), desc="检测进度"):
+            try:
+                result = future.result()
+                if result:
+                    name, url, is_valid = result
+                    if is_valid:
+                        valid_results.append((name, url))
+                    else:
+                        invalid_count += 1
+            except Exception as e:
+                # 理论上 process_line 内部已捕获异常，此处为保险
+                invalid_count += 1
+
+    # 写入有效结果
+    with open(output_file, "w", encoding="utf-8") as f:
+        for name, url in valid_results:
+            f.write(f"{name},{url}\n")
+
+    print("-" * 50)
+    print(f"检测完成!")
+    print(f"有效源数量: {len(valid_results)}")
+    print(f"无效源数量: {invalid_count}")
+    print(f"结果已保存至: {output_file}")
+
+if __name__ == "__main__":
+    # 请修改这里的文件名
+    INPUT_FILE = "网络收集.txt"
+    OUTPUT_FILE = "网络收集.txt"  # 不要与输入文件同名，防止数据丢失
+    
+    main(INPUT_FILE, OUTPUT_FILE)
+
+
+
+############################################################################################################################################
+
+import re
+from pypinyin import lazy_pinyin
+# 打开一个utf-8编码的文本文件
+with open("网络收集.txt", "r", encoding="utf-8") as file:
+    # 读取所有行并存储到列表中
+    lines = file.readlines()
+# 定义一个函数，用于提取每行的第一个数字
+def extract_first_number(line):
+    match = re.search(r'\d+', line)
+    return int(match.group()) if match else float('inf')
+# 对列表中的行进行排序，按照第一个数字的大小排列，其余行按中文排序
+sorted_lines = sorted(lines, key=lambda x: (not 'CCTV' in x, extract_first_number(x) if 'CCTV' in x else lazy_pinyin(x.strip())))
+# 将排序后的行写入新的utf-8编码的文本文件
+with open("网络收集.txt", "w", encoding="utf-8") as file:
+    for line in sorted_lines:
+        file.write(line)
+
+
+
+
+def parse_file(input_file_path, output_file_name):    #
+    # 正则表达式匹配从'//'开始到第一个'/'或第一个'::'结束的部分
+    ip_or_domain_pattern = re.compile(r'//([^/:]*:[^/:]*::[^/:]*|[^/]*)')
+    # 用于存储每个IP或域名及其对应的行列表
+    ip_or_domain_to_lines = {}
+    # 用于生成分类名的字母和数字计数器
+    alphabet_counter = 0  # 字母计数器，从0开始
+    number_counter = 1     # 数字计数器，从1开始
+    # 读取原始文件内容
+    with open(input_file_path, 'r', encoding='utf-8') as file:
+        for line in file:
+            line = line.strip()
+            # 如果行是分类标签行，则跳过
+            if ",#genre#" in line:
+                continue
+            # 检查行是否包含IP或域名
+            match = ip_or_domain_pattern.search(line)
+            if match:
+                # 提取匹配到的IP或域名
+                matched_text = match.group(1)
+                # 去除IP或域名后的剩余部分，只保留匹配到的IP或域名
+                ip_or_domain = matched_text.split('://')[-1].split('/')[0].split('::')[0]
+                # 将行添加到对应的IP或域名列表中
+                if ip_or_domain not in ip_or_domain_to_lines:
+                    ip_or_domain_to_lines[ip_or_domain] = []
+                ip_or_domain_to_lines[ip_or_domain].append(line)
+    # 过滤掉小于1000字节的IP或域名段
+    filtered_ip_or_domain_to_lines = {ip_or_domain: lines for ip_or_domain, lines in ip_or_domain_to_lines.items()
+                                 ####   if sum(len(line) for line in lines) >= 250}   # 过滤掉小于1000字节的IP或域名段
+                                      if sum(len(line) for line in lines) >= 2}   # 过滤掉小于1000字节的IP或域名段
+    # 如果没有满足条件的IP或域名段，则不生成文件
+    if not filtered_ip_or_domain_to_lines:
+        print("没有满足条件的IP或域名段，不生成文件。")
+        return
+    # 合并所有满足条件的IP或域名的行到一个文件
+############################################################
+    with open(output_file_name, 'w', encoding='utf-8') as output_file:   #output_
+        for ip_or_domain, lines in filtered_ip_or_domain_to_lines.items():
+            # 检查是否需要递增数字计数器
+            if alphabet_counter >= 26:
+                number_counter += 1
+                alphabet_counter = 0  # 重置字母计数器          
+ ######################################################              
+            # 生成分类名
+            genre_name = chr(65 + alphabet_counter)# + str(number_counter)
+            output_file.write(f"港澳{genre_name}组,#genre#\n")
+            for line in lines:
+                output_file.write(line + '\n')
+            output_file.write('\n')  # 在每个小段后添加一个空行作为分隔
+            alphabet_counter += 1  # 递增字母计数器
+# 调用函数并传入文件路径和输出文件名
+parse_file('网络收集.txt', '网络收集.txt')
+
+
+
+
+
 import datetime
 now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
 current_time = now.strftime("%Y/%m/%d %H:%M")
@@ -309,6 +556,3 @@ for file in files_to_remove:
     else:              # 如果文件不存在，则提示异常并打印提示信息
         print(f"文件 {file} 不存在，跳过删除。")
 print("任务运行完毕，频道列表可查看文件夹内源.txt文件！")
-
-
-
