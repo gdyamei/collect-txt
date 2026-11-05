@@ -200,82 +200,85 @@ remove_duplicates('汇总.txt', '2.txt')
 
 
 ######################################################################################提取goodiptv
-import re
 import os
-# 定义一个包含所有要排除的关键词的列表
-excluded_keywords = ['http://[', 'p3p://', 'rtmp://', 'http://php.j', '/kkk.jjjj.', 'stream1', '61.221.215.25:8800', 'epg.pw', '4gtv.cnlive.club', 'playtv-live.ifeng.com',                  
-                     'video://https', '.xmcdn.com', 'radio', 'jnzq.ohoyee.com', 'free.', '221.7.175.154', 'audio', 'zmgd.zyrnet.com', 'satellitepull.cnr.cn/live/', 'gmxw.7766.org',
-                     '122.152.202.33', 'psyl11.dyndns.tv', 'youtube.com', 'xhyx.gz.cn', 'aktv-stream', 'api.kkitv', 'aktv.top', 'live4play.uk', 'vpstv.net','raw.githubusercontent',
-                     'tv.iill.top','iptv8k.top','douyincdn.com']
 
-# 定义一个包含所有要提取的关键词的列表
-extract_keywords = ['珠江', '广东新闻', '广东民生', '广州影视', '广州新闻', '广州综合', '佛山公共', '佛山影视', '佛山综合', '东莞', 
-                    '深圳财经生活', '南国都市', 
-                    '翡翠台','有线新闻','无线新闻','TVB翡翠','TVB明珠','NOW新闻','Now','无线华丽','TVB星河','TVB-Plus',
-                    'TVBPLUS','TVB黄金翡翠','TVB千禧','TVB娱乐','TVB J2','RTHK','VIU','凤凰卫视','凤凰香港','凤凰中文',
-                    '凤凰资讯','香港卫视','天映','美亚','新加坡','澳门','澳亚','千禧经典','华丽台',
-                    'TVBS','寰宇','台视','东森','公视','华视','中视新闻','中天新闻','中天娱乐','中天综合',
-                    '中天亚洲','民视','龙华','八大','非凡','三立','纬来育乐','靖天','大立','東森',
-                    'Thrill','龙祥']
+# 1. 定义要排除的垃圾/无效链接关键词（统一转小写）
+excluded_keywords = [
+    'http://[', 'p3p://', 'rtmp://', 'http://php.j', '/kkk.jjjj.', 'stream1', 
+    '61.221.215.25:8800', 'epg.pw', '4gtv.cnlive.club', '://ifeng.com',                  
+    'video://https', '.xmcdn.com', 'radio', '://ohoyee.com', 'free.', '221.7.175.154', 
+    'audio', '://zyrnet.com', 'satellitepull.cnr.cn/live/', 'gmxw.7766.org',
+    '122.152.202.33', 'psyl11.dyndns.tv', 'youtube.com', 'xhyx.gz.cn', 'aktv-stream', 
+    'api.kkitv', 'aktv.top', 'live4play.uk', 'vpstv.net', 'raw.githubusercontent',
+    'tv.iill.top', 'iptv8k.top', 'douyincdn.com'
+]
+excluded_keywords = [k.lower() for k in excluded_keywords]
 
+# 2. 按分类定义提取关键词（用于自动分组）
+categories = {
+    "广东本地": ['珠江', '广东新闻', '广东民生', '广州影视', '广州新闻', '广州综合', '佛山公共', '佛山影视', '佛山综合', '东莞', '深圳财经生活', '南国都市'],
+    "港澳频道": ['翡翠台', '有线新闻', '无线新闻', 'tvb', 'now', 'rthk', 'viu', '凤凰', '香港卫视', '天映', '美亚', '澳门', '澳亚', '千禧经典', '华丽台', 'thrill', '龙祥'],
+    "台湾频道": ['tvbs', '寰宇', '台视', '东森', '東森', '公视', '华视', '中视', '中天', '民视', '龙华', '八大', '非凡', '三立', '纬来', '靖天', '大立'],
+    "其他新加坡": ['新加坡']
+}
 
-# 读取文件并处理每一行
-with open('2.txt', 'r', encoding='utf-8') as file:
-    lines = file.readlines()
+# 展开一个扁平化的关键词列表，方便快速匹配
+all_extract_keywords = [k.lower() for sublist in categories.values() for k in sublist]
 
-    # 创建或打开一个输出文件用于写入处理后的数据
-    with open('网络收集.txt', 'w', encoding='utf-8') as outfile:
-        for line in lines:
-            # 首先检查行是否包含任何提取关键词
-            if any(keyword in line for keyword in extract_keywords):
-                # 如果包含提取关键词，进一步检查行是否不包含任何排除关键词
-                if not any(keyword in line for keyword in excluded_keywords):
-                    outfile.write(line)  # 写入符合条件的行到文件
-
-
-###############################################################
-import re
-def parse_file(input_file_path, output_file_name):
-    # 正则表达式匹配从'//'开始到第一个'/'或第一个'::'结束的部分
-    ip_or_domain_pattern = re.compile(r'//([^/:]*:[^/:]*::[^/:]*|[^/]*)')
-    # 用于存储每个IP或域名及其对应的行列表
-    ip_or_domain_to_lines = {}
-    # 读取原始文件内容
-    with open(input_file_path, 'r', encoding='utf-8') as file:
-        for line in file:
-            line = line.strip()
-            # 如果行是分类标签行，则跳过
-            if ",#genre#" in line:
-                continue
-            # 检查行是否包含IP或域名
-            match = ip_or_domain_pattern.search(line)
-            if match:
-                # 提取匹配到的IP或域名
-                matched_text = match.group(1)
-                # 去除IP或域名后的剩余部分，只保留匹配到的IP或域名
-                ip_or_domain = matched_text.split('://')[-1].split('/')[0].split('::')[0]
-                # 将行添加到对应的IP或域名列表中
-                if ip_or_domain not in ip_or_domain_to_lines:
-                    ip_or_domain_to_lines[ip_or_domain] = []
-                ip_or_domain_to_lines[ip_or_domain].append(line)
-    ############################################################################### 过滤掉小于1500字节的IP或域名段
-    filtered_ip_or_domain_to_lines = {ip_or_domain: lines for ip_or_domain, lines in ip_or_domain_to_lines.items()
-                                      ###  if sum(len(line) for line in lines) >= 300}
-                                      if sum(len(line) for line in lines) >= 10}
-    # 如果没有满足条件的IP或域名段，则不生成文件
-    if not filtered_ip_or_domain_to_lines:
-        print("没有满足条件的IP或域名段，不生成文件。")
+def filter_and_sort_text_playlist(input_file, output_file):
+    if not os.path.exists(input_file):
+        print(f"❌ 错误：找不到输入文件 {input_file}")
         return
-    # 合并所有满足条件的IP或域名的行到一个文件
-    with open(output_file_name, 'w', encoding='utf-8') as output_file:
-        for ip_or_domain, lines in filtered_ip_or_domain_to_lines.items():
-            # 写入IP或域名及其对应的行到输出文件
-            output_file.write(f"频道,#genre#\n")
-            for line in lines:
-                output_file.write(line + '\n')
-            output_file.write('\n')  # 在每个小段后添加一个空行作为分隔
-# 调用函数并传入文件路径和输出文件名
-parse_file('网络收集.txt', '网络收集.txt')
+
+    # 初始化每个分类的容器（用 dict 兼顾去重：{链接: 完整行文本}）
+    classified_data = {cat: {} for cat in categories}
+    classified_data["未分类其他"] = {} # 兜底分类
+    
+    with open(input_file, 'r', encoding='utf-8') as infile:
+        for line in infile:
+            line_strip = line.strip()
+            if not line_strip or ',' not in line_strip: # 过滤空行或不含逗号的无效行
+                continue
+            
+            line_lower = line_strip.lower()
+            
+            # 1. 排除垃圾链接
+            if any(k in line_lower for k in excluded_keywords):
+                continue
+                
+            # 2. 检查是否命中提取关键词
+            if any(k in line_lower for k in all_extract_keywords):
+                # 提取链接部分（通常在逗号后面）作为去重 Key
+                parts = line_strip.split(',', 1)
+                channel_name = parts[0].lower()
+                link = parts[1]
+                
+                # 3. 判断属于哪个分类
+                matched_cat = "未分类其他"
+                for cat, keywords in categories.items():
+                    if any(k.lower() in channel_name for k in keywords):
+                        matched_cat = cat
+                        break
+                
+                # 放入对应分类（自动去重相同链接）
+                classified_data[matched_cat][link] = line_strip
+
+    # 4. 写入新文件
+    total_count = 0
+    with open(output_file, 'w', encoding='utf-8') as outfile:
+        for cat, items in classified_data.items():
+            if items: # 如果该分类下有数据
+                outfile.write(f"\n#首页分类__{cat}\n") # 写入播放器识别的分组标签
+                # 按频道名字排序后写入
+                sorted_lines = sorted(items.values())
+                for sorted_line in sorted_lines:
+                    outfile.write(sorted_line + '\n')
+                    total_count += 1
+
+    print(f"💾 处理完成！已成功筛选并分类归纳 {total_count} 个频道至 {output_file}")
+
+# 执行过滤
+filter_and_sort_text_playlist('2.txt', '网络收集.txt')
 
 
 
