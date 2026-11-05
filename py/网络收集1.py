@@ -24,7 +24,7 @@ from urllib.parse import urlparse
 from translate import Translator  # 导入Translator类,用于文本翻译
 ## 定义txt文件的URL列表
 urls = [
-       #'https://raw.githubusercontent.com/kimwang1978/collect-txt/refs/heads/main/bbxx365.txt' #,
+       'https://raw.githubusercontent.com/kimwang1978/collect-txt/refs/heads/main/bbxx365.txt',
        'https://raw.githubusercontent.com/zengzifeng520/china-iptv-sources/refs/heads/main/output/live.txt'   
 ]
 
@@ -206,7 +206,7 @@ import os
 excluded_keywords = ['http://[', 'p3p://', 'rtmp://', 'http://php.j', '/kkk.jjjj.', 'stream1', '61.221.215.25:8800', 'epg.pw', '4gtv.cnlive.club', 'playtv-live.ifeng.com',                  
                      'video://https', '.xmcdn.com', 'radio', 'jnzq.ohoyee.com', 'free.', '221.7.175.154', 'audio', 'zmgd.zyrnet.com', 'satellitepull.cnr.cn/live/', 'gmxw.7766.org',
                      '122.152.202.33', 'psyl11.dyndns.tv', 'youtube.com', 'xhyx.gz.cn', 'aktv-stream', 'api.kkitv', 'aktv.top', 'live4play.uk', 'vpstv.net','raw.githubusercontent',
-                     'tv.iill.top','iptv8k.top']
+                     'tv.iill.top','iptv8k.top','pull-hls-f11']
 
 # 定义一个包含所有要提取的关键词的列表
 extract_keywords = ['珠江', '广东新闻', '广东民生', '广州影视', '广州新闻', '广州综合', '佛山公共', '佛山影视', '佛山综合', '东莞', 
@@ -604,7 +604,7 @@ def parse_file(input_file_path, output_file_name):    #
     # 过滤掉小于1000字节的IP或域名段
     filtered_ip_or_domain_to_lines = {ip_or_domain: lines for ip_or_domain, lines in ip_or_domain_to_lines.items()
                                  ####   if sum(len(line) for line in lines) >= 250}   # 过滤掉小于1000字节的IP或域名段
-                                      if sum(len(line) for line in lines) >= 25}   # 过滤掉小于1000字节的IP或域名段
+                                      if sum(len(line) for line in lines) >= 2}   # 过滤掉小于1000字节的IP或域名段
     # 如果没有满足条件的IP或域名段，则不生成文件
     if not filtered_ip_or_domain_to_lines:
         print("没有满足条件的IP或域名段，不生成文件。")
