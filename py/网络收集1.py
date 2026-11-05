@@ -97,9 +97,6 @@ replacements = {
     	"CCTV风云剧场": "风云剧场",
     	"CCTV第一剧场": "第一剧场",
     	"CCTV怀旧剧场": "怀旧剧场",
-
-
-
     	"测试cctv": "CCTV",
     	"CCTV1综合": "CCTV1",
     	"CCTV2财经": "CCTV2",
