@@ -160,7 +160,8 @@ import os
 # 定义一个包含所有要排除的关键词的列表
 excluded_keywords = ['http://', 'p3p://', 'rtmp://', 'http://php.j', '/kkk.jjjj.', 'stream1', '61.221.215.25:8800', 'epg.pw', '4gtv.cnlive.club', 'playtv-live.ifeng.com',                  
                      'video://https', '.xmcdn.com', 'radio', 'jnzq.ohoyee.com', 'free.', '221.7.175.154', 'audio', 'zmgd.zyrnet.com', 'satellitepull.cnr.cn/live/', 'gmxw.7766.org',
-                     '122.152.202.33', 'psyl11.dyndns.tv', 'youtube.com', 'xhyx.gz.cn'] 
+                     '122.152.202.33', 'psyl11.dyndns.tv', 'youtube.com', 'xhyx.gz.cn', 'aktv-stream', 'api.kkitv', 'aktv.top', 'live4play.uk', 'vpstv.net','raw.githubusercontent',
+                     'tv.iill.top','iptv8k.top']
               #### 'zb.qc', '/vd', 'rtmp://', 'stream1', '/kkk.jjjj.', 'http://php.j', '4gtv.cnlive.club', 'video://https', 'epg.pw',  
               #### 'youtube.com', 'tv.iill.top', 'audio', 'aktv-stream', 'api.kkitv', 'aktv.top', 'live4play.uk', 'vpstv.net', 'radio']    #, 'CHC', '/TV2/'
               #### '21dtv', 'txmov2', 'gcw.bdcdn', 'metshop', 'shandong', 'goodiptv', '购物', '[', 'P3P', '腔', '曲', '//1', '/hls/', '/tsfile/', 
