@@ -24,8 +24,8 @@ from urllib.parse import urlparse
 from translate import Translator  # 导入Translator类,用于文本翻译
 ## 定义txt文件的URL列表
 urls = [
-       'https://raw.githubusercontent.com/kimwang1978/collect-txt/refs/heads/main/bbxx365.txt',
-       'https://raw.githubusercontent.com/zengzifeng520/china-iptv-sources/refs/heads/main/output/live.txt'   #'
+       'https://raw.githubusercontent.com/kimwang1978/collect-txt/refs/heads/main/bbxx365.txt' #,
+      #' 'https://raw.githubusercontent.com/zengzifeng520/china-iptv-sources/refs/heads/main/output/live.txt'   
 ]
 
 # 合并文件的函数
