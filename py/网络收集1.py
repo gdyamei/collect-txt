@@ -501,8 +501,8 @@ def main(input_file, output_file):
 
 if __name__ == "__main__":
     # 请修改这里的文件名
-    INPUT_FILE = "网络收集.txt"
-    OUTPUT_FILE = "网络收集.txt"  # 不要与输入文件同名，防止数据丢失
+    INPUT_FILE = "网络收集1.txt"
+    OUTPUT_FILE = "网络收集1.txt"  # 不要与输入文件同名，防止数据丢失
     
     main(INPUT_FILE, OUTPUT_FILE)
 
