@@ -1,4 +1,4 @@
-2026/11/06 04:45更新,#genre#
+2026/11/06 10:17更新,#genre#
 港澳A组,#genre#
 Fox新闻,https://fox-foxnewsnow-samsungus.amagi.tv/playlist720p.m3u8
 
@@ -85,6 +85,7 @@ TVB娱乐新闻,https://cdn6.cc.cd/163189/ylxw
 港澳I组,#genre#
 TVB千禧经典,http://74.91.26.218:82/live/tvbjd.m3u8
 TVB星河,http://74.91.26.218:82/live/tvbxh.m3u8
+公视,http://74.91.26.218:82/live/pts.m3u8
 广东新闻,http://74.91.26.218:82/live/gdxw.m3u8
 广东珠江,http://74.91.26.218:82/live/gdzj.m3u8
 美亚电影,http://74.91.26.218:82/live/mydy.m3u8
@@ -108,15 +109,18 @@ TVB无线新闻,http://iactive-clink.com:8081/live/yifaTV-007.m3u8
 中天新闻,http://iactive-clink.com:8081/live/111ztxw.m3u8
 
 港澳M组,#genre#
-TVB无线新闻,http://main.light-ott.net:80/play/live.php?extension=ts&mac=00:1B:79:42:10:51&stream=1495601
+TVB无线新闻,http://mag.trexlive.me:80/play/live.php?extension=ts&mac=00:1A:79:06:9A:77&stream=153399
 
 港澳N组,#genre#
-TVB无线新闻,http://mtayeh.ottb.xyz/live/774710333494/659822672281/58592.ts
+TVB无线新闻,http://main.light-ott.net:80/play/live.php?extension=ts&mac=00:1B:79:42:10:51&stream=1495601
+
+港澳O组,#genre#
+TVB无线新闻,http://mtayeh.ottb.xyz/live/774710333494/659822672281/58596.ts
 东森戏剧,http://mtayeh.ottb.xyz/live/774710333494/659822672281/59157.ts
 凤凰资讯,http://mtayeh.ottb.xyz/live/774710333494/659822672281/58611.ts
 台视新闻,http://mtayeh.ottb.xyz/live/774710333494/659822672281/59168.ts
 
-港澳O组,#genre#
+港澳P组,#genre#
 TVB无线新闻,https://cdn6.123.rr.kg/163189/wxxw
 TVB无线新闻,https://cdn6.123.rr.kg/163189/wxxwt
 TVB星河2,http://cdn6.123.rr.kg/163189/tvbxh
@@ -136,16 +140,16 @@ TVBJ1,http://cdn6.123.rr.kg/163189/j1
 无线新闻台,http://cdn6.123.rr.kg/163189/wxxw
 无线新闻台2,http://cdn6.123.rr.kg/163189/wxxwt
 
-港澳P组,#genre#
+港澳Q组,#genre#
 TVB星河,http://31.43.191.125:8080/restream/restream/34560
 凤凰中文,http://31.43.191.125:8080/restream/restream/34629
 凤凰资讯,http://31.43.191.125:8080/restream/restream/34641
 
-港澳Q组,#genre#
+港澳R组,#genre#
 TVB星河,https://10.fast.hidns.vip/163189/xinghe/
 VIU,https://10.fast.hidns.vip/163189/viu/
 
-港澳R组,#genre#
+港澳S组,#genre#
 TVB星河,https://cdn10.123.rr.kg/163189/xinghe/
 TVB Plus(WebVTT字幕),http://cdn10.123.rr.kg/163189/tvbp/
 ViuTVsix,http://cdn10.123.rr.kg/163189/viu6/
@@ -154,7 +158,7 @@ ViuTVsix,http://cdn10.123.rr.kg/163189/viu6/
 天映经典台2,http://cdn10.123.rr.kg/163189/ccm/
 天映新加坡,http://cdn10.123.rr.kg/163189/typd/
 
-港澳S组,#genre#
+港澳T组,#genre#
 TVB星河,https://cdn3.indevs.in/stream/live/tvbxh/
 TVBPlus,https://cdn3.indevs.in/stream/tvb/tvbp/
 翡翠台,https://cdn3.indevs.in/stream/tvb/fct/
@@ -162,7 +166,7 @@ TVBPlus,https://cdn3.indevs.in/stream/tvb/tvbp/
 天映,https://cdn3.indevs.in/stream/live/typd/
 天映经典,https://cdn3.indevs.in/stream/live/ccm/
 
-港澳T组,#genre#
+港澳U组,#genre#
 TVB星河1,http://cdn3.123.rr.kg/stream/live/tvbxh/
 TVB Plus(字幕),http://cdn3.123.rr.kg/stream/tvb/tvbp/
 翡翠台(字幕),http://cdn3.123.rr.kg/stream/tvb/fct/
@@ -172,16 +176,16 @@ TVB Plus(字幕),http://cdn3.123.rr.kg/stream/tvb/tvbp/
 天映经典台,http://cdn3.123.rr.kg/stream/live/ccm/
 天映频道,http://cdn3.123.rr.kg/stream/live/typd/
 
-港澳U组,#genre#
+港澳V组,#genre#
 TVBPLUS,http://cdn.163189.xyz/live/tvbp/stream.m3u8
 凤凰中文,http://cdn.163189.xyz/live/fhzw/stream.m3u8
 
-港澳V组,#genre#
+港澳W组,#genre#
 TVBS新闻,http://jnzq.ohoyee.com:9080/live/xingjiaoge-tvbsxw.m3u8
 寰宇新闻,http://jnzq.ohoyee.com:9080/live/xiangjiaoge-hyxw.m3u8
 中天新闻,http://jnzq.ohoyee.com:9080/live/332123-ztxw2.m3u8
 
-港澳W组,#genre#
+港澳X组,#genre#
 TVBS新闻台,http://38.64.72.148/hls/modn/list/4027/playlist.m3u8
 TVBS亚洲,http://38.64.72.148/hls/modn/list/4005/chunklist0.m3u8
 TVBS亚洲,http://38.64.72.148/hls/modn/list/4005/chunklist1.m3u8
@@ -198,7 +202,7 @@ TVBS亚洲,http://38.64.72.148/hls/modn/list/4005/playlist.m3u8
 台视新闻,http://38.64.72.148/hls/modn/list/4013/chunklist1.m3u8
 台视新闻台,http://38.64.72.148/hls/modn/list/4013/playlist.m3u8
 
-港澳X组,#genre#
+港澳Y组,#genre#
 TVBS亚洲,http://38.64.72.148:80/hls/modn/list/4005/chunklist0.m3u8
 TVBS亚洲,http://38.64.72.148:80/hls/modn/list/4005/chunklist1.m3u8
 TVBS亚洲,http://38.64.72.148:80/hls/modn/list/4005/playlist.m3u8?
@@ -215,17 +219,17 @@ TVBS亚洲台,http://38.64.72.148:80/hls/modn/list/4005/playlist.m3u8
 台视新闻,http://38.64.72.148:80/hls/modn/list/4013/chunklist1.m3u8
 台视新闻,http://38.64.72.148:80/hls/modn/list/4013/playlist.m3u8
 
-港澳Y组,#genre#
+港澳Z组,#genre#
 澳门莲花,http://anren.live/HK/BiIOU11uLA.m3u8
 香港卫视,http://anren.live/HK/BSJDUFpB.m3u8
 
-港澳Z组,#genre#
+港澳A组,#genre#
 澳门资讯,https://live5.tdm.com.mo/ch5/info_ch5.live/playlist.m3u8
 
-港澳A组,#genre#
+港澳B组,#genre#
 大立电视,http://www.dalitv.com.tw:4568/live/dali/index.m3u8
 
-港澳B组,#genre#
+港澳C组,#genre#
 东莞新闻,http://121.10.7.16:4000/rtp/239.253.43.104:5146
 东莞新闻综合高清,http://121.10.7.16:4000/udp/239.253.43.104:5146
 佛山公共,http://121.10.7.16:4000/rtp/239.253.43.53:5146
@@ -245,14 +249,14 @@ TVBS亚洲台,http://38.64.72.148:80/hls/modn/list/4005/playlist.m3u8
 广州综合,http://121.10.7.16:4000/udp/239.253.43.71:5146
 南国都市4K,http://121.10.7.16:4000/udp/239.253.43.99:5146
 
-港澳C组,#genre#
+港澳D组,#genre#
 东莞新闻,https://stream.sun0769.com/dgrtv1/mp4tv1_1500/index.m3u8
 东莞新闻综合,http://stream.sun0769.com/dgrtv1/mp4tv1_1500.flv
 东莞新闻综合,http://stream.sun0769.com/dgrtv1/mp4tv1_1500/index.m3u8
 东莞新闻综合,http://stream.sun0769.com/dgrtv1/mp4tv1_800.flv
 东莞新闻综合,http://stream.sun0769.com/dgrtv1/mp4tv1_800/index.m3u8
 
-港澳D组,#genre#
+港澳E组,#genre#
 东莞新闻综合高清,http://14.127.213.91:4022/udp/239.253.43.104:5146
 佛山公共高清,http://14.127.213.91:4022/udp/239.253.43.53:5146
 广东民生,http://14.127.213.91:4022/udp/239.77.0.225:5146
@@ -264,12 +268,15 @@ TVBS亚洲台,http://38.64.72.148:80/hls/modn/list/4005/playlist.m3u8
 南国都市4K,http://14.127.213.91:4022/udp/239.253.43.99:5146
 深圳财经生活,http://14.127.213.91:4022/udp/239.77.1.22:5146
 
-港澳E组,#genre#
+港澳F组,#genre#
 东莞新闻综合高清,http://ddns.cyruslee.top:8888/udp/239.253.43.104:5146
 佛山公共高清,http://ddns.cyruslee.top:8888/udp/239.253.43.53:5146
-广东新闻,http://ddns.cyruslee.top:8888/udp/239.77.0.173:5146
+佛山综合,http://ddns.cyruslee.top:8888/udp/239.253.43.57:5146
+广东民生,http://ddns.cyruslee.top:8888/udp/239.77.0.225:5146
+广州综合,http://ddns.cyruslee.top:8888/udp/239.253.43.71:5146
+南国都市4K,http://ddns.cyruslee.top:8888/udp/239.253.43.99:5146
 
-港澳F组,#genre#
+港澳G组,#genre#
 东莞新闻综合高清,http://home.szjim.top:4000/udp/239.253.43.104:5146
 佛山公共高清,http://home.szjim.top:4000/udp/239.253.43.53:5146
 佛山综合,http://home.szjim.top:4000/udp/239.253.43.57:5146
@@ -284,22 +291,24 @@ TVBS亚洲台,http://38.64.72.148:80/hls/modn/list/4005/playlist.m3u8
 广州综合,http://home.szjim.top:4000/udp/239.253.43.71:5146
 南国都市4K,http://home.szjim.top:4000/udp/239.253.43.99:5146
 
-港澳G组,#genre#
+港澳H组,#genre#
 东莞新闻综合高清,http://vpn.jk960.cn:8686/udp/239.253.43.104:5146
 广东民生,http://vpn.jk960.cn:8686/udp/239.77.0.225:5146
-广东新闻,http://vpn.jk960.cn:8686/udp/239.77.0.173:5146
 广东珠江,http://vpn.jk960.cn:8686/udp/239.77.0.114:5146
 广东珠江,http://vpn.jk960.cn:8686/udp/239.77.0.1:5146
+广东珠江,http://vpn.jk960.cn:8686/udp/239.77.1.94:5146
+广州新闻,http://vpn.jk960.cn:8686/rtp/239.253.43.72:5146
+广州新闻,http://vpn.jk960.cn:8686/udp/239.253.43.72:5146
 广州综合,http://vpn.jk960.cn:8686/udp/239.253.43.71:5146
 
-港澳H组,#genre#
+港澳I组,#genre#
 东森新闻,http://211.72.174.95:8138/0.ts
 
-港澳I组,#genre#
+港澳J组,#genre#
 东森综合2台,https://h5cdn3.kylintv.tv/live/ebcvtv_iphone.m3u8
 无线新闻台,https://h5cdn3.kylintv.tv/live/tvbnews_iphone.m3u8
 
-港澳J组,#genre#
+港澳K组,#genre#
 翡翠台,http://120.198.86.186:9901/tsfile/live/1007_1.m3u8?key=txiptv&amp;playlive=1&amp;authid=0
 凤凰中文,http://120.198.86.186:9901/tsfile/live/1037_1.m3u8?key=txiptv&amp;playlive=1&amp;authid=0
 广东民生,http://120.198.86.186:9901/tsfile/live/1013_1.m3u8?key=txiptv&amp;playlive=1&amp;authid=0
@@ -308,7 +317,7 @@ TVBS亚洲台,http://38.64.72.148:80/hls/modn/list/4005/playlist.m3u8
 天映频道,http://120.198.86.186:9901/tsfile/live/1043_1.m3u8?key=txiptv&amp;playlive=1&amp;authid=0
 珠江高清,http://120.198.86.186:9901/tsfile/live/1011_1.m3u8?key=txiptv&amp;playlive=1&amp;authid=0
 
-港澳K组,#genre#
+港澳L组,#genre#
 翡翠台,http://120.198.95.220:9901/tsfile/live/1004_1.m3u8?key=txiptv
 凤凰中文,http://120.198.95.220:9901/tsfile/live/1036_1.m3u8?key=txiptv
 凤凰中文,http://120.198.95.220:9901/tsfile/live/1036_1.m3u8?key=txiptv&playlive=1&down=1
@@ -316,7 +325,7 @@ TVBS亚洲台,http://38.64.72.148:80/hls/modn/list/4005/playlist.m3u8
 凤凰资讯,http://120.198.95.220:9901/tsfile/live/1037_1.m3u8?key=txiptv&playlive=1&down=1
 广东珠江,http://120.198.95.220:9901/tsfile/live/1007_1.m3u8?key=txiptv&playlive=1&down=1
 
-港澳L组,#genre#
+港澳M组,#genre#
 翡翠台,http://120.238.84.45:9901/tsfile/live/1103_1.m3u8?key=txiptv&amp;playlive=1&amp;authid=0
 凤凰中文,http://120.238.84.45:9901/tsfile/live/1007_1.m3u8?key=txiptv&amp;playlive=1&amp;authid=0
 广东民生,http://120.238.84.45:9901/tsfile/live/1011_1.m3u8?key=txiptv&amp;playlive=1&amp;authid=0
@@ -324,174 +333,173 @@ TVBS亚洲台,http://38.64.72.148:80/hls/modn/list/4005/playlist.m3u8
 广东珠江,http://120.238.84.45:9901/tsfile/live/1009_1.m3u8?key=txiptv&amp;playlive=1&amp;authid=0
 明珠台,http://120.238.84.45:9901/tsfile/live/1000_1.m3u8?key=txiptv&amp;playlive=1&amp;authid=0
 
-港澳M组,#genre#
+港澳N组,#genre#
 翡翠台,http://beishan008.asuscomm.com:8889/bysid/1.m3u8
 
-港澳N组,#genre#
+港澳O组,#genre#
 翡翠台4K(字幕),http://o11.163189.xyz/stream/tvb/fct4k/
 
-港澳O组,#genre#
+港澳P组,#genre#
 翡翠台4K,http://cdn6.163189.xyz/163189/fct4k
 
-港澳P组,#genre#
+港澳Q组,#genre#
 凤凰卫视,http://218.206.193.218:8888/hls/67/index.m3u8
 凤凰中文,http://218.206.193.218:8888/hls/66/index.m3u8
 
-港澳Q组,#genre#
+港澳R组,#genre#
 凤凰香港,http://43.152.224.209/qctv.fengshows.cn/live/0701phk72.flv
 凤凰中文,http://43.152.224.209/qctv.fengshows.cn/live/0701pcc72.flv
 凤凰资讯,http://43.152.224.209/qctv.fengshows.cn/live/0701pin72.flv
 
-港澳R组,#genre#
+港澳S组,#genre#
 凤凰香港,http://bobohome.ignorelist.com:20247/fengshows?id=3.m3u8
 凤凰中文,http://bobohome.ignorelist.com:20247/fengshows?id=2.m3u8
 凤凰资讯,http://bobohome.ignorelist.com:20247/fengshows?id=1.m3u8
 
-港澳S组,#genre#
+港澳T组,#genre#
 凤凰中文,http://156.238.224.170:7001/fhx.php?id=cn
 
-港澳T组,#genre#
+港澳U组,#genre#
 凤凰中文,http://183.237.95.108:9901/tsfile/live/1103_1.m3u8?key=txiptv&playlive=0&authid=0
 广东民生,http://183.237.95.108:9901/tsfile/live/1032_1.m3u8?key=txiptv&playlive=0&authid=0
 广东新闻,http://183.237.95.108:9901/tsfile/live/1031_1.m3u8?key=txiptv&playlive=0&authid=0
-
-港澳U组,#genre#
-凤凰中文,http://219.145.93.74:10000/tsfile/live/1002_1.m3u8?key=txiptv&playlive=1&authid=0
+广东珠江,http://183.237.95.108:9901/tsfile/live/1030_1.m3u8?key=txiptv&playlive=0&authid=0
 
 港澳V组,#genre#
+凤凰中文,http://219.145.93.74:10000/tsfile/live/1002_1.m3u8?key=txiptv&playlive=1&authid=0
+
+港澳W组,#genre#
 凤凰中文,http://alist.xicp.fun:52057/rtp/239.69.2.20:11274
 凤凰资讯,http://alist.xicp.fun:52057/rtp/239.69.2.19:11268
 
-港澳W组,#genre#
+港澳X组,#genre#
 凤凰中文,http://e1.woc.iiiya.cn:18888/rtp/239.61.2.183:9086
 凤凰中文,http://e1.woc.iiiya.cn:18888/rtp/239.61.2.184:9092
 
-港澳X组,#genre#
+港澳Y组,#genre#
 凤凰中文,http://e3.woc.iiiya.cn:18888/rtp/239.61.2.183:9086
 凤凰中文,http://e3.woc.iiiya.cn:18888/rtp/239.61.2.184:9092
 
-港澳Y组,#genre#
+港澳Z组,#genre#
 凤凰中文,http://jellyfin.eversouthhangzhou.com.cn:8188/rtp/233.50.202.35:5140
 凤凰资讯,http://jellyfin.eversouthhangzhou.com.cn:8188/rtp/233.50.202.36:5140
 
-港澳Z组,#genre#
+港澳A组,#genre#
 凤凰中文,http://jyb7928.host:8066/udp/239.1.1.126:8126
 凤凰资讯,http://jyb7928.host:8066/udp/239.1.1.127:8127
 
-港澳A组,#genre#
-凤凰中文,http://lg.868048.xyz:7878/udp/239.76.246.134:1234
-凤凰资讯,http://lg.868048.xyz:7878/udp/239.76.253.134:9000
-
 港澳B组,#genre#
+凤凰中文,http://lg.868048.xyz:7878/udp/239.76.246.134:1234
+凤凰中文,http://lg.868048.xyz:7878/udp/239.76.253.135:9000
+凤凰资讯,http://lg.868048.xyz:7878/udp/239.76.246.135:1234
+
+港澳C组,#genre#
 凤凰中文,http://playtv-live.ifeng.com/live/06OLEGEGM4G.m3u8
 凤凰资讯,http://playtv-live.ifeng.com/live/06OLEEWQKN4.m3u8
 凤凰资讯,https://playtv-live.ifeng.com/live/06OLEEWQKN4.m3u8
 
-港澳C组,#genre#
+港澳D组,#genre#
 凤凰中文,http://playtv-live.ifeng.com:80/live/06OLEGEGM4G.m3u8
 凤凰资讯,http://playtv-live.ifeng.com:80/live/06OLEEWQKN4.m3u8
 
-港澳D组,#genre#
+港澳E组,#genre#
 凤凰中文,http://woc.iiiya.cn:18888/rtp/239.61.2.183:9086
 凤凰中文,http://woc.iiiya.cn:18888/rtp/239.61.2.184:9092
 
-港澳E组,#genre#
+港澳F组,#genre#
 凤凰中文,http://www.893224162.xyz:8188/udp/239.94.2.51:5140
 凤凰中文,http://www.893224162.xyz:8188/udp/239.94.2.52:5140
 凤凰资讯,http://www.893224162.xyz:8188/udp/239.94.2.49:5140
 凤凰资讯,http://www.893224162.xyz:8188/udp/239.94.2.50:5140
 
-港澳F组,#genre#
+港澳G组,#genre#
 凤凰中文,http://www.ct123.online:8188/rtp/239.69.2.20:11274
 凤凰资讯,http://www.ct123.online:8188/rtp/239.69.2.19:11268
 
-港澳G组,#genre#
+港澳H组,#genre#
 凤凰中文,http://www.zyhfm.com:8088/rtp/239.69.2.20:11274
 凤凰资讯,http://www.zyhfm.com:8088/rtp/239.69.2.19:11268
 
-港澳H组,#genre#
+港澳I组,#genre#
 凤凰中文,http://xiangxiws.vip:6777/qlw.php?key=qq%E7%BE%A4746405779&id=fhzw
 凤凰资讯,http://xiangxiws.vip:6777/qlw.php?key=qq%E7%BE%A4746405779&id=fhzx
 中天新闻,http://xiangxiws.vip:6777/qlw.php?key=qq群746405779&id=ztxw
 中天新闻,http://xiangxiws.vip:6777/qlw.php?key=qq%E7%BE%A4746405779&id=ztxw
 
-港澳I组,#genre#
+港澳J组,#genre#
 凤凰中文,http://xmzj.f3322.net:8188/udp/239.94.2.51:5140
 凤凰中文,http://xmzj.f3322.net:8188/udp/239.94.2.52:5140
 凤凰资讯,http://xmzj.f3322.net:8188/udp/239.94.2.49:5140
 凤凰资讯,http://xmzj.f3322.net:8188/udp/239.94.2.50:5140
 
-港澳J组,#genre#
+港澳K组,#genre#
 凤凰中文,http://yy15238.netyiyang.com:8800/rtp/239.69.2.20:11274
 凤凰资讯,http://yy15238.netyiyang.com:8800/rtp/239.69.2.19:11268
 
-港澳K组,#genre#
+港澳L组,#genre#
 凤凰中文,http://z2m.eversouthhangzhou.com.cn:8188/rtp/233.50.202.35:5140
 凤凰资讯,http://z2m.eversouthhangzhou.com.cn:8188/rtp/233.50.202.36:5140
 
-港澳L组,#genre#
+港澳M组,#genre#
 凤凰中文,http://zmgd.zyrnet.com:8888/hls/110/index.m3u8
 凤凰资讯,http://zmgd.zyrnet.com:8888/hls/109/index.m3u8
 
-港澳M组,#genre#
+港澳N组,#genre#
 凤凰资讯,http://www.tk1986.top:8889/udp/239.76.253.134:9000
 
-港澳N组,#genre#
+港澳O组,#genre#
 佛山公共,http://www.yahao.host:4022/rtp/239.253.43.53:5146
 佛山综合,http://www.yahao.host:4022/rtp/239.253.43.57:5146
 广州新闻,http://www.yahao.host:4022/rtp/239.253.43.72:5146
 
-港澳O组,#genre#
+港澳P组,#genre#
 公视,http://211.72.174.95:8116/0.ts
 
-港澳P组,#genre#
+港澳Q组,#genre#
 广东民生,http://183.11.239.36:808/hls/18/index.m3u8
 广东新闻,http://183.11.239.36:808/hls/5/index.m3u8
 广东珠江,http://183.11.239.36:808/hls/83/index.m3u8
 
-港澳Q组,#genre#
+港澳R组,#genre#
 广东民生,http://38.75.136.137:98/gslb/dsdqpub/gdgg.m3u8?auth=testpub
 广东新闻,http://38.75.136.137:98/gslb/dsdqpub/gdxw.m3u8?auth=testpub
 广东新闻,http://38.75.136.137:98/gslb/dsdqpub/gdxwa.m3u8?auth=testpub
 广东珠江,http://38.75.136.137:98/gslb/dsdqpub/gdzj.m3u8?auth=testpub
 广东珠江,http://38.75.136.137:98/gslb/dsdqpub/gdzja.m3u8?auth=testpub
 
-港澳R组,#genre#
+港澳S组,#genre#
 广东民生,http://rfx2025.shunderen.top:2345/udp/239.77.0.225:5146
 广东珠江,http://rfx2025.shunderen.top:2345/udp/239.77.0.114:5146
 广东珠江,http://rfx2025.shunderen.top:2345/udp/239.77.0.1:5146
 南国都市4K,http://rfx2025.shunderen.top:2345/udp/239.253.43.99:5146
 
-港澳S组,#genre#
+港澳T组,#genre#
 广东民生,http://tv.8610000.cn:555/gdtv/gdtv.php?id=48
 广东新闻,http://tv.8610000.cn:555/gdtv/gdtv.php?id=45
 广东珠江,http://tv.8610000.cn:555/gdtv/gdtv.php?id=44
 
-港澳T组,#genre#
+港澳U组,#genre#
 广东民生台,http://mg.hmysapp.cn:177/gdtv.php?id=48
 广东新闻台,http://mg.hmysapp.cn:177/gdtv.php?id=45
 广东珠江台,http://mg.hmysapp.cn:177/gdtv.php?id=44
 
-港澳U组,#genre#
+港澳V组,#genre#
 广东新闻,http://107.150.60.122/live/gdxw.m3u8
 广东珠江,http://107.150.60.122/live/gdzj.m3u8
 
-港澳V组,#genre#
+港澳W组,#genre#
 广东新闻,http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdxw
 广东珠江,http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdzj
 广东珠江,http://63.141.230.178:82/gslb/zbdq5.m3u8?id=gdzja
 
-港澳W组,#genre#
+港澳X组,#genre#
 广东珠江,http://cdn2.163189.xyz/live/gdzj/stream.m3u8
 
-港澳X组,#genre#
+港澳Y组,#genre#
 广东珠江频道,http://113.98.11.46:3000/639731952
 
-港澳Y组,#genre#
-广东珠江频道,http://222.213.105.65:7788/639731952
-
 港澳Z组,#genre#
-广东珠江频道,http://47.103.64.145:8014/639731952
+广东珠江频道,http://222.213.105.65:7788/639731952
 
 港澳A组,#genre#
 广州南国都市,https://tencentplay.gztv.com/live/nanguodushi.m3u8?txSecret=babbcbacdbcf13a3311a264e4dd66b8d&txTime=191b60b41a7
